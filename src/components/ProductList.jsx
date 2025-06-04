@@ -3,17 +3,26 @@ import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import ProductFilters from './ProductFilters';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import '../styles/ProductList.css'
 
 
 const ProductList = () => {
   // Datos de ejemplo
   const allProducts = [
-    { id: 1, name: 'Producto A', date: '2025-06-01', status: 'Activo' },
-    { id: 2, name: 'Producto B', date: '2025-06-02', status: 'Inactivo' },
-    { id: 3, name: 'Producto C', date: '2025-06-03', status: 'Activo' },
-    { id: 4, name: 'Producto D', date: '2025-06-04', status: 'Inactivo' },
-    { id: 5, name: 'Producto E', date: '2025-06-05', status: 'Activo' },
-    { id: 6, name: 'Producto F', date: '2025-06-06', status: 'Activo' },
+    { id: 1, name: 'Producto A', date: '2025-05-24', status: 'Activo' },
+    { id: 2, name: 'Producto B', date: '2025-05-25', status: 'Inactivo' },
+    { id: 3, name: 'Producto C', date: '2025-05-26', status: 'Activo' },
+    { id: 4, name: 'Producto D', date: '2025-05-27', status: 'Activo' },
+    { id: 5, name: 'Producto E', date: '2025-05-28', status: 'Inactivo' },
+    { id: 6, name: 'Producto F', date: '2025-05-29', status: 'Activo' },
+    { id: 7, name: 'Producto G', date: '2025-05-30', status: 'Activo' },
+    { id: 8, name: 'Producto H', date: '2025-05-31', status: 'Inactivo' },
+    { id: 9, name: 'Producto I', date: '2025-06-01', status: 'Activo' },
+    { id: 10, name: 'Producto J', date: '2025-06-02', status: 'Inactivo' },
+    { id: 11, name: 'Producto K', date: '2025-06-03', status: 'Activo' },
+    { id: 12, name: 'Producto L', date: '2025-06-04', status: 'Activo' },
+    { id: 13, name: 'Producto M', date: '2025-05-23', status: 'Inactivo' },
+    { id: 14, name: 'Producto N', date: '2025-05-22', status: 'Activo' }
     // más productos...
   ];
 
@@ -66,12 +75,15 @@ const ProductList = () => {
   
 
   return (
-    <div>
+    // Aplicar clase CSS al contenedor principal
+    <div className="product-list-container">
       <h2>Listado de Productos</h2>
 
-      <SearchBar value={search} onChange={setSearch} />
-
-      <ProductFilters filters={filters} onChange={setFilters} />
+      {/* Fila combinada para búsqueda y filtros */}
+      <div className="filter-search-row">
+        <SearchBar value={search} onChange={setSearch} />
+        <ProductFilters filters={filters} onChange={setFilters} />
+      </div>
 
       {/* Tabla de productos */}
       <table border="1" cellPadding="10" cellSpacing="0">
@@ -89,7 +101,8 @@ const ProductList = () => {
         <tbody>
           {paginated.length === 0 ? (
             <tr>
-              <td colSpan="4">No hay productos</td>
+              {/* Aplicar clase al mensaje de no productos */}
+              <td colSpan="5" className="no-products">No hay productos</td>
             </tr>
           ) : (
             paginated.map(p => (
@@ -99,16 +112,19 @@ const ProductList = () => {
                 <td>{p.date}</td>
                 <td>{p.status}</td>
                 <td>
-                  <FaEdit
-                    onClick={() => handleEdit(p.id)}
-                    style={{ cursor: 'pointer', marginRight: '10px' }}
-                    title="Editar" // Tooltip al pasar el mouse
-                  />
-                  <FaTrash
-                    onClick={() => handleDelete(p.id)}
-                    style={{ cursor: 'pointer' }}
-                    title="Eliminar" // Tooltip al pasar el mouse
-                  />
+                  {/* Contenedor para los iconos de acción */}
+                  <div className="action-icons">
+                    {/* Iconos con comportamiento de botón */}
+                    <FaEdit
+                      onClick={() => handleEdit(p.id)}
+                      title="Editar" // Tooltip al pasar el mouse
+                    />
+                    <FaTrash
+                      onClick={() => handleDelete(p.id)}
+                      title="Eliminar" // Tooltip al pasar el mouse
+                      className="delete-icon" // Clase específica para el icono de eliminar
+                    />
+                  </div>
                 </td>
               </tr>
             ))

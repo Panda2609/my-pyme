@@ -1,0 +1,123 @@
+/* File: inventario-pymes/src/components/ProductList.css */
+
+/* Estilos para el contenedor principal */
+.product-list-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos para el título */
+.product-list-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Estilos para la tabla */
+.product-list-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  max-width: 1000px;
+  margin-top: 20px;
+}
+
+.product-list-container th,
+.product-list-container td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.product-list-container th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.product-list-container tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.product-list-container tbody tr:hover {
+  background-color: #e9e9e9;
+}
+
+/* Estilos para las celdas de acciones 
+
+/* Estilos para los iconos de acción */
+.product-list-container .action-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espacio entre iconos */
+}
+
+.product-list-container .action-icons svg {
+  cursor: pointer;
+  font-size: 1.2em; /* Tamaño del icono */
+  transition: color 0.2s ease-in-out;
+}
+
+.product-list-container .action-icons svg:hover {
+  color: #007bff; /* Color al pasar el mouse */
+}
+
+/* Estilo específico para el icono de eliminar */
+.product-list-container .action-icons .delete-icon:hover {
+  color: #dc3545; /* Color rojo al pasar el mouse sobre eliminar */
+}
+
+/* Estilo para el mensaje de "No hay productos" */
+.product-list-container .no-products {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+/* Estilos para la barra de búsqueda y filtros */
+.filter-search-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* SearchBar y ProductFilters ocupan el mismo alto y se alinean */
+.filter-search-row .search-bar-input {
+  flex: 1 1 220px;
+  min-width: 180px;
+  margin-bottom: 0;
+  max-width: 400px;
+}
+
+.filter-search-row .product-filters-container {
+  flex: 2 1 350px;
+  margin-bottom: 0;
+  box-shadow: none;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  max-width: 700px;
+}
+
+@media (max-width: 900px) {
+  .filter-search-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .filter-search-row .search-bar-input,
+  .filter-search-row .product-filters-container {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+

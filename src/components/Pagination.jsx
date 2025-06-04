@@ -1,21 +1,32 @@
+import '../styles/Pagination.css'
+
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
 return (
-    <div style={{ marginTop: '1rem' }}>
+    <div className="pagination-container">
+        <button
+            onClick={() => onPageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+        >
+            Anterior
+        </button>
         {pages.map(page => (
             <button
-            key={page}
-            onClick={() => onPageChange(page)}
-            style={{
-                margin: '0 5px',
-                padding: '5px 10px',
-                fontWeight: currentPage === page ? 'bold' : 'normal'
-            }}
+                key={page}
+                onClick={() => onPageChange(page)}
+                // Aplicar clase 'active' si es la página actual
+                className={currentPage === page ? 'active' : ''}
             >
                 {page}
             </button>
         ))}
+        <button
+            onClick={() => onPageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+        >
+            Siguiente
+        </button>
     </div>
 );
 };

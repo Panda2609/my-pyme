@@ -1,0 +1,38 @@
+/* File: inventario-pymes/src/components/Pagination.css */
+
+/* Contenedor principal de la paginación */
+.pagination-container {
+  display: flex; /* Usar flexbox para alinear los elementos */
+  justify-content: center; /* Centrar horizontalmente los elementos */
+  margin-top: 20px; /* Espacio superior */
+  gap: 5px; /* Espacio entre los botones/elementos de paginación */
+}
+
+/* Estilos para los botones de paginación */
+.pagination-container button {
+  padding: 8px 12px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde */
+  background-color: #fff; /* Fondo blanco por defecto */
+  cursor: pointer; /* Cambiar cursor a mano */
+  border-radius: 4px; /* Bordes redondeados */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Transición suave para hover */
+}
+
+/* Estilos para el botón de página actual (activo) */
+.pagination-container button.active {
+  background-color: #007bff; /* Fondo azul para la página activa */
+  color: white; /* Texto blanco para la página activa */
+  border-color: #007bff; /* Borde azul */
+  font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilos al pasar el mouse sobre los botones (excepto el activo y deshabilitados) */
+.pagination-container button:not(.active):not(:disabled):hover {
+  background-color: #e9e9e9; /* Fondo gris claro al pasar el mouse */
+}
+
+/* Estilos para botones deshabilitados */
+.pagination-container button:disabled {
+  cursor: not-allowed; /* Cursor de no permitido */
+  opacity: 0.5; /* Reducir opacidad */
+}
