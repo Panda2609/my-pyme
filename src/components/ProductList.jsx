@@ -9,20 +9,20 @@ import '../styles/ProductList.css'
 const ProductList = () => {
   // Datos de ejemplo
   const allProducts = [
-    { id: 1, name: 'Producto A', date: '2025-05-24', status: 'Activo' },
-    { id: 2, name: 'Producto B', date: '2025-05-25', status: 'Inactivo' },
-    { id: 3, name: 'Producto C', date: '2025-05-26', status: 'Activo' },
-    { id: 4, name: 'Producto D', date: '2025-05-27', status: 'Activo' },
-    { id: 5, name: 'Producto E', date: '2025-05-28', status: 'Inactivo' },
-    { id: 6, name: 'Producto F', date: '2025-05-29', status: 'Activo' },
-    { id: 7, name: 'Producto G', date: '2025-05-30', status: 'Activo' },
-    { id: 8, name: 'Producto H', date: '2025-05-31', status: 'Inactivo' },
-    { id: 9, name: 'Producto I', date: '2025-06-01', status: 'Activo' },
-    { id: 10, name: 'Producto J', date: '2025-06-02', status: 'Inactivo' },
-    { id: 11, name: 'Producto K', date: '2025-06-03', status: 'Activo' },
-    { id: 12, name: 'Producto L', date: '2025-06-04', status: 'Activo' },
-    { id: 13, name: 'Producto M', date: '2025-05-23', status: 'Inactivo' },
-    { id: 14, name: 'Producto N', date: '2025-05-22', status: 'Activo' }
+    { id: 1, name: 'Producto A', codigo: 'A001', cantidad: 50, categoria: 'Electrónica', precio: 1200, proveedor: 'Proveedor X', date: '2025-05-24', status: 'Activo' },
+    { id: 2, name: 'Producto B', codigo: 'B002', cantidad: 30, categoria: 'Hogar', precio: 800, proveedor: 'Proveedor Y', date: '2025-05-25', status: 'Inactivo' },
+    { id: 3, name: 'Producto C', codigo: 'C003', cantidad: 15, categoria: 'Electrodomésticos', precio: 1500, proveedor: 'Proveedor Z', date: '2025-05-26', status: 'Activo' },
+    { id: 4, name: 'Producto D', codigo: 'D004', cantidad: 60, categoria: 'Jardinería', precio: 400, proveedor: 'Proveedor X', date: '2025-05-27', status: 'Activo' },
+    { id: 5, name: 'Producto E', codigo: 'E005', cantidad: 10, categoria: 'Electrónica', precio: 2200, proveedor: 'Proveedor Y', date: '2025-05-28', status: 'Inactivo' },
+    { id: 6, name: 'Producto F', codigo: 'F006', cantidad: 80, categoria: 'Hogar', precio: 350, proveedor: 'Proveedor Z', date: '2025-05-29', status: 'Activo' },
+    { id: 7, name: 'Producto G', codigo: 'G007', cantidad: 25, categoria: 'Electrodomésticos', precio: 900, proveedor: 'Proveedor X', date: '2025-05-30', status: 'Activo' },
+    { id: 8, name: 'Producto H', codigo: 'H008', cantidad: 40, categoria: 'Jardinería', precio: 600, proveedor: 'Proveedor Y', date: '2025-05-31', status: 'Inactivo' },
+    { id: 9, name: 'Producto I', codigo: 'I009', cantidad: 70, categoria: 'Electrónica', precio: 1100, proveedor: 'Proveedor Z', date: '2025-06-01', status: 'Activo' },
+    { id: 10, name: 'Producto J', codigo: 'J010', cantidad: 20, categoria: 'Hogar', precio: 500, proveedor: 'Proveedor X', date: '2025-06-02', status: 'Inactivo' },
+    { id: 11, name: 'Producto K', codigo: 'K011', cantidad: 35, categoria: 'Electrodomésticos', precio: 1750, proveedor: 'Proveedor Y', date: '2025-06-03', status: 'Activo' },
+    { id: 12, name: 'Producto L', codigo: 'L012', cantidad: 55, categoria: 'Jardinería', precio: 300, proveedor: 'Proveedor Z', date: '2025-06-04', status: 'Activo' },
+    { id: 13, name: 'Producto M', codigo: 'M013', cantidad: 12, categoria: 'Electrónica', precio: 2100, proveedor: 'Proveedor X', date: '2025-05-23', status: 'Inactivo' },
+    { id: 14, name: 'Producto N', codigo: 'N014', cantidad: 45, categoria: 'Hogar', precio: 750, proveedor: 'Proveedor Y', date: '2025-05-22', status: 'Activo' }
     // más productos...
   ];
 
@@ -79,10 +79,16 @@ const ProductList = () => {
     <div className="product-list-container">
       <h2>Listado de Productos</h2>
 
-      {/* Fila combinada para búsqueda y filtros */}
+      {/* Fila combinada para búsqueda, filtros y botón */}
       <div className="filter-search-row">
         <SearchBar value={search} onChange={setSearch} />
         <ProductFilters filters={filters} onChange={setFilters} />
+        <button
+          className="add-product-btn"
+          onClick={() => console.log('Botón Agregar Producto presionado')}
+        >
+          Agregar Producto
+        </button>
       </div>
 
       {/* Tabla de productos */}
@@ -90,8 +96,13 @@ const ProductList = () => {
 
         <thead>
           <tr>
-            <th>ID</th>
+            {/* <th>ID</th> */}
             <th>Nombre</th>
+            <th>Código</th>
+            <th>Stock actual</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Proovedor</th>
             <th>Fecha</th>
             <th>Estado</th>
             <th>Acciones</th>
@@ -107,8 +118,12 @@ const ProductList = () => {
           ) : (
             paginated.map(p => (
               <tr key={p.id}>
-                <td>{p.id}</td>
                 <td>{p.name}</td>
+                <td>{p.codigo}</td>
+                <td>{p.cantidad}</td>
+                <td>{p.categoria}</td>
+                <td>{p.precio}</td>
+                <td>{p.proveedor}</td>
                 <td>{p.date}</td>
                 <td>{p.status}</td>
                 <td>
