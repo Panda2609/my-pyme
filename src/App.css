@@ -1,0 +1,44 @@
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  background: #f7fafc;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 220px;
+  padding: 32px 24px;
+  transition: margin-left 0.2s cubic-bezier(.4,0,.2,1);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    padding: 24px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .App {
+    flex-direction: column;
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 16px 2vw;
+  }
+}
+
+/* Sidebar menu text truncation */
+.sidebar .menu-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 120px;
+}
+
+.sidebar.collapsed .menu-text {
+  display: none;
+}
