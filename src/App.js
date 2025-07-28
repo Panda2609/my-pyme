@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
+
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import ProductList from './components/ProductList';
+import mockDashboardData from './data/mockDashboardData';
+import mockProducts from './data/mockProducts';
 
 
 function App() {
@@ -12,8 +15,8 @@ function App() {
     <div className="App">
       <Sidebar onMenuClick={setView} />
       <main className="main-content">
-        {view === 'dashboard' && <Dashboard />}
-        {view === 'inventario' && <ProductList />}
+        {view === 'dashboard' && <Dashboard dashboardData={mockDashboardData} />}
+        {view === 'inventario' && <ProductList products={mockProducts} />}
       </main>
     </div>
   );
