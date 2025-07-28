@@ -61,84 +61,86 @@ const ProductList = ({ products }) => {
 
   return (
     // Aplicar clase CSS al contenedor principal
-    <div className="product-list-container">
-      <h2>Listado de Productos</h2>
+    <>
+      <div className="product-list-container">
+        {/* Título de la lista de productos */}
+        <h2>Lista de Productos</h2>
+        {/* Fila combinada para búsqueda, filtros y botón */}
+        <div className="filter-search-row">
+          <SearchBar value={search} onChange={setSearch} />
+          <ProductFilters filters={filters} onChange={setFilters} />
+          <button
+            className="add-product-btn"
+            onClick={() => console.log('Botón Agregar Producto presionado')}
+          >
+            Agregar Producto
+          </button>
+        </div>
 
-      {/* Fila combinada para búsqueda, filtros y botón */}
-      <div className="filter-search-row">
-        <SearchBar value={search} onChange={setSearch} />
-        <ProductFilters filters={filters} onChange={setFilters} />
-        <button
-          className="add-product-btn"
-          onClick={() => console.log('Botón Agregar Producto presionado')}
-        >
-          Agregar Producto
-        </button>
-      </div>
+        {/* Tabla de productos */}
+        <table border="1" cellPadding="10" cellSpacing="0">
 
-      {/* Tabla de productos */}
-      <table border="1" cellPadding="10" cellSpacing="0">
-
-        <thead>
-          <tr>
-            {/* <th>ID</th> */}
-            <th>Nombre</th>
-            <th>Código</th>
-            <th>Stock actual</th>
-            <th>Categoría</th>
-            <th>Precio</th>
-            <th>Proovedor</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {paginated.length === 0 ? (
+          <thead>
             <tr>
-              {/* Aplicar clase al mensaje de no productos */}
-              <td colSpan="5" className="no-products">No hay productos</td>
+              {/* <th>ID</th> */}
+              <th>Nombre</th>
+              <th>Código</th>
+              <th>Stock actual</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Proovedor</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Acciones</th>
             </tr>
-          ) : (
-            paginated.map(p => (
-              <tr key={p.id}>
-                <td>{p.name}</td>
-                <td>{p.codigo}</td>
-                <td>{p.cantidad}</td>
-                <td>{p.categoria}</td>
-                <td>{p.precio}</td>
-                <td>{p.proveedor}</td>
-                <td>{p.date}</td>
-                <td>{p.status}</td>
-                <td>
-                  {/* Contenedor para los iconos de acción */}
-                  <div className="action-icons">
-                    {/* Iconos con comportamiento de botón */}
-                    <FaEdit
-                      onClick={() => handleEdit(p.id)}
-                      title="Editar" // Tooltip al pasar el mouse
-                    />
-                    <FaTrash
-                      onClick={() => handleDelete(p.id)}
-                      title="Eliminar" // Tooltip al pasar el mouse
-                      className="delete-icon" // Clase específica para el icono de eliminar
-                    />
-                  </div>
-                </td>
+          </thead>
+
+          <tbody>
+            {paginated.length === 0 ? (
+              <tr>
+                {/* Aplicar clase al mensaje de no productos */}
+                <td colSpan="5" className="no-products">No hay productos</td>
               </tr>
-            ))
-          )}
-        </tbody>
+            ) : (
+              paginated.map(p => (
+                <tr key={p.id}>
+                  <td>{p.name}</td>
+                  <td>{p.codigo}</td>
+                  <td>{p.cantidad}</td>
+                  <td>{p.categoria}</td>
+                  <td>{p.precio}</td>
+                  <td>{p.proveedor}</td>
+                  <td>{p.date}</td>
+                  <td>{p.status}</td>
+                  <td>
+                    {/* Contenedor para los iconos de acción */}
+                    <div className="action-icons">
+                      {/* Iconos con comportamiento de botón */}
+                      <FaEdit
+                        onClick={() => handleEdit(p.id)}
+                        title="Editar" // Tooltip al pasar el mouse
+                      />
+                      <FaTrash
+                        onClick={() => handleDelete(p.id)}
+                        title="Eliminar" // Tooltip al pasar el mouse
+                        className="delete-icon" // Clase específica para el icono de eliminar
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
 
-      </table>
+        </table>
 
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-      />
-    </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
+    </>
   );
 };
 

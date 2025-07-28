@@ -8,7 +8,7 @@
 .main-content {
   flex: 1;
   margin-left: 220px;
-  padding: 32px 24px;
+  padding: 1em 1.5em;
   transition: margin-left 0.2s cubic-bezier(.4,0,.2,1);
   min-width: 0;
   box-sizing: border-box;

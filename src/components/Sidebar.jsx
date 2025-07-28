@@ -33,6 +33,13 @@ const Sidebar = ({ onMenuClick }) => {
           </span>
           {!collapsed && <span className="menu-text">Inventario de productos</span>}
         </button>
+        <button className="sidebar-menu-item" tabIndex={0} onClick={() => onMenuClick('calendar')}>
+          <span className="menu-icon">
+            {/* Icono de calendario */}
+            <svg width="24" height="24" fill="none" stroke="#4A5568" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v2M8 3v2M3 9h18"/></svg>
+          </span>
+          {!collapsed && <span className="menu-text">Agenda / Calendario</span>}
+        </button>
       </nav>
     </aside>
   );

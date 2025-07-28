@@ -2,9 +2,8 @@
 
 /* Estilos para el contenedor principal */
 .product-list-container {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
+  /* padding: 0.5em ; */
+  /* border: 1px solid #ccc; */
   border-radius: 8px;
   background-color: #f9f9f9;
   display: flex;
@@ -12,11 +11,10 @@
   align-items: center;
 }
 
-/* Estilos para el título */
 .product-list-container h2 {
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
+  align-self: flex-start;
+  text-align: left;
+  width: 100%;
 }
 
 /* Estilos para la tabla */

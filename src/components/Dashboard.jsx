@@ -98,7 +98,7 @@ const Dashboard = ({ dashboardData }) => {
                     <h3>Productos más vendidos</h3>
                     <ol className="scrollable-list">
                         {productosMasVendidos.map((prod, idx) => (
-                            <li key={idx}>{prod.nombre} <span>({prod.vendidos} vendidos)</span></li>
+                            <li key={idx} className="mas-vendidos">{prod.nombre} <span>({prod.vendidos} vendidos)</span></li>
                         ))}
                     </ol>
                 </div>
@@ -118,7 +118,7 @@ const Dashboard = ({ dashboardData }) => {
                     <h3>Próximos a vencer</h3>
                     <ul className="scrollable-list">
                         {productosProximosAVencer.map((prod, idx) => (
-                            <li key={idx}>{prod.nombre} <span>(Vence: {prod.vence})</span></li>
+                            <li key={idx} className="proximos-vencer">{prod.nombre} <span>(Vence: {prod.vence})</span></li>
                         ))}
                     </ul>
                 </div>
