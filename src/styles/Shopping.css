@@ -1,0 +1,88 @@
+/* Tabla de compras */
+.shopping-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  margin-top: 1.5rem;
+  font-size: 1em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.shopping-table th, .shopping-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+}
+.shopping-table th {
+  background: #2d3748;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #4a5568;
+}
+.shopping-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.15s;
+}
+.shopping-table tbody tr:hover {
+  background: #f7fafc;
+}
+.shopping-table td {
+  color: #2d3748;
+  vertical-align: top;
+}
+.shopping-table .no-products {
+  text-align: center;
+  color: #a0aec0;
+  font-style: italic;
+  background: #f7fafc;
+}
+.shopping-table-wrapper {
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+/* Modal de productos */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  border-radius: 10px;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  position: relative;
+}
+.close-modal-btn {
+  margin-top: 1.5rem;
+  background: #2d3748;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+}
+.close-modal-btn:hover {
+  background: #4a5568;
+}
+.eye-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4a5568;
+  font-size: 1.2em;
+  padding: 0.2em 0.5em;
+  transition: color 0.2s;
+}
+.eye-btn:hover {
+  color: #2b6cb0;
+}

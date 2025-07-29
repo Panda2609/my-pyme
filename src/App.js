@@ -10,6 +10,8 @@ import mockprovidersData from './data/mockProvidersData';
 import Providers from './components/Providers';
 import Sales from './components/Sales';
 import mockSalesData from './data/mockSalesData';
+import mockShoppingData from './data/mockShoppingData';
+import Shopping from './components/Shopping';
 
 
 
@@ -25,6 +27,7 @@ function App() {
         {view === 'clientes' &&  <Client />}
         {view === 'proveedores' && <Providers providers={mockprovidersData}/>}
         {view === 'ventas' && <Sales salesData={mockSalesData} />}
+        {view === 'compras' && <Shopping shoppingData={mockShoppingData} />}
       </main>
     </div>
   );
