@@ -1,0 +1,30 @@
+
+const mockClientsData = [
+  { id: 1, nombre: "Juan Pérez", contacto: "juan.perez@mail.com", historial: ["Laptop HP", "Mouse Logitech"] },
+  { id: 2, nombre: "María Gómez", contacto: "maria.gomez@mail.com", historial: ["Monitor Samsung"] },
+  { id: 3, nombre: "Carlos Ruiz", contacto: "carlos.ruiz@mail.com", historial: ["Teclado Redragon", "Silla Gamer"] },
+  { id: 4, nombre: "Ana Torres", contacto: "ana.torres@mail.com", historial: ["Impresora Epson"] },
+  { id: 5, nombre: "Pedro Sánchez", contacto: "pedro.sanchez@mail.com", historial: ["Tablet Lenovo"] },
+  { id: 6, nombre: "Lucía Fernández", contacto: "lucia.fernandez@mail.com", historial: ["Auriculares Sony"] },
+  { id: 7, nombre: "Miguel Castro", contacto: "miguel.castro@mail.com", historial: ["Disco Duro Seagate"] },
+  { id: 8, nombre: "Sofía Herrera", contacto: "sofia.herrera@mail.com", historial: ["Router TP-Link"] },
+  { id: 9, nombre: "Javier Morales", contacto: "javier.morales@mail.com", historial: ["Monitor LG", "Webcam Logitech"] },
+  { id: 10, nombre: "Valentina Ríos", contacto: "valentina.rios@mail.com", historial: ["Mousepad SteelSeries"] },
+  { id: 11, nombre: "Andrés Vargas", contacto: "andres.vargas@mail.com", historial: ["Laptop Dell"] },
+  { id: 12, nombre: "Camila Jiménez", contacto: "camila.jimenez@mail.com", historial: ["Teclado Logitech"] },
+  { id: 13, nombre: "Diego Romero", contacto: "diego.romero@mail.com", historial: ["Monitor Asus"] },
+  { id: 14, nombre: "Paula Medina", contacto: "paula.medina@mail.com", historial: ["Tablet Samsung"] },
+  { id: 15, nombre: "Ricardo Soto", contacto: "ricardo.soto@mail.com", historial: ["Impresora HP"] },
+  { id: 16, nombre: "Gabriela Castro", contacto: "gabriela.castro@mail.com", historial: ["Auriculares JBL"] },
+  { id: 17, nombre: "Fernando León", contacto: "fernando.leon@mail.com", historial: ["Disco Duro WD"] },
+  { id: 18, nombre: "Daniela Silva", contacto: "daniela.silva@mail.com", historial: ["Router Asus"] },
+  { id: 19, nombre: "Alejandro Reyes", contacto: "alejandro.reyes@mail.com", historial: ["Webcam Microsoft"] },
+  { id: 20, nombre: "Isabella Ortega", contacto: "isabella.ortega@mail.com", historial: ["Mouse Genius"] },
+  { id: 21, nombre: "Sebastián Peña", contacto: "sebastian.pena@mail.com", historial: ["Monitor BenQ"] },
+  { id: 22, nombre: "Martina Cabrera", contacto: "martina.cabrera@mail.com", historial: ["Teclado Corsair"] },
+  { id: 23, nombre: "Tomás Molina", contacto: "tomas.molina@mail.com", historial: ["Laptop Lenovo"] },
+  { id: 24, nombre: "Renata Aguirre", contacto: "renata.aguirre@mail.com", historial: ["Silla de Oficina"] },
+  { id: 25, nombre: "Emilio Navarro", contacto: "emilio.navarro@mail.com", historial: ["Monitor Philips"] },
+];
+
+export default mockClientsData;
