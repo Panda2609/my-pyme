@@ -8,6 +8,8 @@ import mockDashboardData from './data/mockDashboardData';
 import mockProducts from './data/mockProducts';
 import mockprovidersData from './data/mockProvidersData';
 import Providers from './components/Providers';
+import Sales from './components/Sales';
+import mockSalesData from './data/mockSalesData';
 
 
 
@@ -22,6 +24,7 @@ function App() {
         {view === 'inventario' && <ProductList products={mockProducts} />}
         {view === 'clientes' &&  <Client />}
         {view === 'proveedores' && <Providers providers={mockprovidersData}/>}
+        {view === 'ventas' && <Sales salesData={mockSalesData} />}
       </main>
     </div>
   );
