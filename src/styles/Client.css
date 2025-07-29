@@ -1,0 +1,55 @@
+
+.client-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.client-table th, .client-table td {
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  padding: 8px;
+}
+.client-table th {
+  border-bottom: 1px solid #ccc;
+}
+.client-historial-btn {
+  padding: 4px 12px;
+  cursor: pointer;
+  background: #f7fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.client-historial-btn:hover {
+  background: #e2e8f0;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 400px;
+}
+.modal-close-btn {
+  margin-top: 16px;
+  padding: 6px 16px;
+  cursor: pointer;
+  background: #f7fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.modal-close-btn:hover {
+  background: #e2e8f0;
+}
