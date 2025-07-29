@@ -47,6 +47,19 @@ const Sidebar = ({ onMenuClick }) => {
           {!collapsed && <span className="menu-text">Clientes</span>}
         </button>
 
+        <button className="sidebar-menu-item" tabIndex={0} onClick={() => onMenuClick('proveedores')}>
+          <span className="menu-icon">
+            {/* Icono de proveedores */}
+            <svg width="24" height="24" fill="none" stroke="#4A5568" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <circle cx="8" cy="8" r="4"/>
+              <circle cx="16" cy="8" r="4"/>
+              <path d="M2 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+              <path d="M18 20v-2a4 4 0 0 0-4-4"/>
+            </svg>
+          </span>
+          {!collapsed && <span className="menu-text">Proveedores</span>}
+        </button>
+
       </nav>
     </aside>
   );
