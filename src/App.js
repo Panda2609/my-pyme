@@ -6,6 +6,8 @@ import ProductList from './components/ProductList';
 import Client from './components/Client';
 import mockDashboardData from './data/mockDashboardData';
 import mockProducts from './data/mockProducts';
+import mockprovidersData from './data/mockProvidersData';
+import Providers from './components/Providers';
 
 
 
@@ -19,6 +21,7 @@ function App() {
         {view === 'dashboard' && <Dashboard dashboardData={mockDashboardData} />}
         {view === 'inventario' && <ProductList products={mockProducts} />}
         {view === 'clientes' &&  <Client />}
+        {view === 'proveedores' && <Providers providers={mockprovidersData}/>}
       </main>
     </div>
   );
