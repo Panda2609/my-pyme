@@ -22,7 +22,10 @@ const Dashboard = ({ dashboardData }) => {
 
     return (
         <div className="dashboard-container">
-            <h2>Dashboard de Inventario</h2>
+            <div className='dashboard-header'>
+                <h2>Dashboard</h2>
+            </div>
+            
             {/* Fila 1: KPIs */}
             <div className="dashboard-resumen-row">
                 <div className="resumen-card">
