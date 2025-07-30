@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Sidebar.css';
+import { MdDashboard, MdInventory2, MdPeople, MdLocalShipping, MdPointOfSale, MdShoppingCart } from 'react-icons/md';
 
 const Sidebar = ({ onMenuClick }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -14,7 +15,7 @@ const Sidebar = ({ onMenuClick }) => {
               <text x="16" y="21" textAnchor="middle" fill="#fff" fontSize="16" fontFamily="Arial" fontWeight="bold">IP</text>
             </svg>
           </span>
-          {!collapsed && <span className="logo-text">InventarioPyme</span>}
+          {!collapsed && <span className="logo-text">MyPyme</span>}
         </div>
         <button className="sidebar-toggle" onClick={() => setCollapsed(!collapsed)} title="Expandir/Colapsar">
           <span>{collapsed ? '»' : '«'}</span>
@@ -24,63 +25,42 @@ const Sidebar = ({ onMenuClick }) => {
 
         <button className="sidebar-menu-item" tabIndex={0} onClick={() => onMenuClick('dashboard')}>
           <span className="menu-icon">
-            <svg width="24" height="24" fill="none" stroke="#4A5568" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+            <MdDashboard size={24} color="#4A5568" />
           </span>
           {!collapsed && <span className="menu-text">Dashboard</span>}
         </button>
 
         <button className="sidebar-menu-item" tabIndex={0} onClick={() => onMenuClick('inventario')}>
           <span className="menu-icon">
-            <svg width="24" height="24" fill="none" stroke="#4A5568" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 3v4M8 3v4"/></svg>
+            <MdInventory2 size={24} color="#4A5568" />
           </span>
           {!collapsed && <span className="menu-text">Inventario de productos</span>}
         </button>
 
         <button className="sidebar-menu-item" tabIndex={0} onClick={() => onMenuClick('clientes')}>
           <span className="menu-icon">
-            {/* Icono de usuario */}
-            <svg width="24" height="24" fill="none" stroke="#4A5568" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M6 20v-2a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v2"/>
-            </svg>
+            <MdPeople size={24} color="#4A5568" />
           </span>
           {!collapsed && <span className="menu-text">Clientes</span>}
         </button>
 
         <button className="sidebar-menu-item" tabIndex={0} onClick={() => onMenuClick('proveedores')}>
           <span className="menu-icon">
-            {/* Icono de proveedores */}
-            <svg width="24" height="24" fill="none" stroke="#4A5568" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-              <circle cx="8" cy="8" r="4"/>
-              <circle cx="16" cy="8" r="4"/>
-              <path d="M2 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
-              <path d="M18 20v-2a4 4 0 0 0-4-4"/>
-            </svg>
+            <MdLocalShipping size={24} color="#4A5568" />
           </span>
           {!collapsed && <span className="menu-text">Proveedores</span>}
         </button>
 
         <button className="sidebar-menu-item" tabIndex={0} onClick={() => onMenuClick('ventas')}>
           <span className="menu-icon">
-            {/* Icono de ventas */}
-            <svg width="24" height="24" fill="none" stroke="#4A5568" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-              <circle cx="9" cy="21" r="1"/>
-              <circle cx="20" cy="21" r="1"/>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h7.72a2 2 0 0 0 2-1.61L23 6H6"/>
-            </svg>
+            <MdPointOfSale size={24} color="#4A5568" />
           </span>
           {!collapsed && <span className="menu-text">Ventas</span>}
         </button>
 
         <button className="sidebar-menu-item" tabIndex={0} onClick={() => onMenuClick('compras')}>
           <span className="menu-icon">
-            {/* Icono de compras (carrito) */}
-            <svg width="24" height="24" fill="none" stroke="#4A5568" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-              <circle cx="9" cy="21" r="1"/>
-              <circle cx="20" cy="21" r="1"/>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h7.72a2 2 0 0 0 2-1.61L23 6H6"/>
-              <path d="M7 6V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3"/>
-            </svg>
+            <MdShoppingCart size={24} color="#4A5568" />
           </span>
           {!collapsed && <span className="menu-text">Compras</span>}
         </button>
