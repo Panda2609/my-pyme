@@ -3,15 +3,16 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 220px;
-  background: #1A202C;
-  color: #fff;
+  width: 10%;
+  background: var(--color-bg-main);
+  color: var(--color-text-main);
   display: flex;
   flex-direction: column;
   align-items: stretch;
   transition: width 0.2s cubic-bezier(.4,0,.2,1);
   box-shadow: 2px 0 8px rgba(0,0,0,0.04);
   z-index: 100;
+  gap :2em;
 }
 
 .sidebar.collapsed {
@@ -22,15 +23,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 0 8px 0;
+  justify-content: center;
+  padding: 3em 0 3em 0;
   border-bottom: 1px solid #232b3a;
+  width: 100%;
+  position: relative;
 }
 
 .sidebar-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 1.5em;
   width: 100%;
 }
 
@@ -38,6 +42,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.logo-circle {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .logo-text {
@@ -48,25 +60,35 @@
 }
 
 .sidebar-toggle {
-  background: none;
-  border: none;
-  color: #A0AEC0;
-  font-size: 1.2rem;
+  position: absolute;
+  top: 6em;
+  right: -20px;
+  background: #fff;
+  border: 2px solid var(--color-text-main);
+  color: #2D3748;
+  font-size: 1.3rem;
   cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 4px;
-  align-self: flex-end;
-  transition: color 0.2s;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  z-index: 101;
 }
 .sidebar-toggle:hover {
+  background: #2D3748;
   color: #fff;
+  border-color: #2D3748;
 }
 
 .sidebar-menu {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 32px;
+  gap: 1.5em;
+  /* margin-top: 32px; */
   padding: 0 8px;
 }
 
@@ -75,7 +97,7 @@
   align-items: center;
   gap: 16px;
   padding: 12px 16px;
-  color: #A0AEC0;
+  color: var(--color-text-secondary);
   background: none;
   border: none;
   text-align: left;

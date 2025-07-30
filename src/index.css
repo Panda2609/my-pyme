@@ -19,3 +19,23 @@ h2 {
   /* margin-bottom: 1.5rem; */
   letter-spacing: 1px;
 }
+
+:root {
+  --color-bg-main: #1A202C;
+  --color-bg-secondary: #232b3a;
+  --color-bg-highlight: #2D3748;
+  --color-bg-light: #fff;
+
+  --color-text-main: #1A202C;
+  --color-text-secondary: #A0AEC0;
+  --color-text-disabled: #718096;
+
+  --color-primary: #3182CE;
+  --color-success: #38A169;
+  --color-danger: #E53E3E;
+}
+body {
+  background: var(--color-bg-main);
+  color: var(--color-text-main);
+  /* ... */
+}
