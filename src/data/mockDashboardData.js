@@ -1,9 +1,11 @@
 // Datos simulados para el dashboard
 const mockDashboardData = {
   resumenInventario: {
-    costos: 35000,
-    ventas: 180,
-    ganancias: 15000,
+    ingresosMes: 35000, // pesos
+    gananciaNeta: 15000, // pesos
+    productoMasVendido: 'Laptop HP',
+    productosBajoStock: 7, // cantidad
+    productosProximosAVencer: 5 // cantidad
   },
   ventasPorMes: [
     { mes: 'Ene', ventas: 20 },
@@ -46,11 +48,11 @@ const mockDashboardData = {
     { nombre: 'Batería Dell', stock: 1 }
   ],
   productosProximosAVencer: [
-    { nombre: 'Tóner HP', vence: '2025-07-01' },
-    { nombre: 'Batería APC', vence: '2025-06-20' },
-    { nombre: 'Cartucho Epson', vence: '2025-06-15' },
-    { nombre: 'Pilas Duracell', vence: '2025-06-10' },
-    { nombre: 'Disco SSD Kingston', vence: '2025-06-08' }
+    { nombre: 'Tóner HP', vence: '2025-07-01', cantidad: 8 },
+    { nombre: 'Batería APC', vence: '2025-06-20', cantidad: 3 },
+    { nombre: 'Cartucho Epson', vence: '2025-06-15', cantidad: 5 },
+    { nombre: 'Pilas Duracell', vence: '2025-06-10', cantidad: 12 },
+    { nombre: 'Disco SSD Kingston', vence: '2025-06-08', cantidad: 2 }
   ]
 };
 
