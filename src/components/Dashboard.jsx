@@ -128,7 +128,7 @@ const Dashboard = ({ dashboardData }) => {
                 <div className="resumen-card-value">${resumenInventario.gananciaNeta}</div>
               </div>
               <div className="resumen-card">
-                <button className='kpi-info-btn' onClick={() => setModal('masVendidos')}>
+                <button className='kpi-info-btn' title="Ver más" onClick={() => setModal('masVendidos')}>
                   <FaExternalLinkAlt className="kpi-info-icon" />
                 </button>
                 <h4>Producto más vendido del mes</h4>
@@ -136,7 +136,7 @@ const Dashboard = ({ dashboardData }) => {
                 <div className="resumen-card-value">{resumenInventario.productoMasVendido}</div>
               </div>
               <div className="resumen-card">
-                <button className='kpi-info-btn' onClick={() => setModal('bajoStock')}>
+                <button className='kpi-info-btn' title="Ver más" onClick={() => setModal('bajoStock')}>
                   <FaExternalLinkAlt className="kpi-info-icon" />
                 </button>
                 <h4>Productos con bajo stock</h4>
@@ -144,7 +144,7 @@ const Dashboard = ({ dashboardData }) => {
                 <div className="resumen-card-value">{resumenInventario.productosBajoStock}</div>
               </div>
               <div className="resumen-card">
-                <button className='kpi-info-btn' onClick={() => setModal('proximosVencer')}>
+                <button className='kpi-info-btn' title="Ver más" onClick={() => setModal('proximosVencer')}>
                   <FaExternalLinkAlt className="kpi-info-icon" />
                 </button>
                 <h4>Productos próximos a vencer</h4>
