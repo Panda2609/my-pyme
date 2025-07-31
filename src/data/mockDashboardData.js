@@ -1,9 +1,11 @@
 // Datos simulados para el dashboard
 const mockDashboardData = {
   resumenInventario: {
-    costos: 35000,
-    ventas: 180,
-    ganancias: 15000,
+    ingresosMes: 35000, // pesos
+    gananciaNeta: 15000, // pesos
+    productoMasVendido: 'Laptop HP',
+    productosBajoStock: 7, // cantidad
+    productosProximosAVencer: 5 // cantidad
   },
   ventasPorMes: [
     { mes: 'Ene', ventas: 20 },

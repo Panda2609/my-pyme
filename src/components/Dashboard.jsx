@@ -25,59 +25,56 @@ const Dashboard = ({ dashboardData }) => {
     return (
         <>
             <div className="dashboard-container">
-
                 <div className='dashboard-header'>
                     <h2>Dashboard</h2>
                 </div>
-
-
-            <div className="dashboard-graficos-kpi-layout">
-                {/* KPIs a la izquierda */}
-                <div className="dashboard-kpi-card">
-                    <div className="resumen-card">
-                        <h4>Ingresos del mes</h4>
-                        <FaDollarSign className="kpi-icon" />
-                        <div className="resumen-card-value">${resumenInventario.costos}</div>
-                    </div>
-                    <div className="resumen-card">
-                        <h4>Ganancia neta del mes</h4>
-                        <FaChartLine className="kpi-icon" />
-                        <div className="resumen-card-value">{resumenInventario.ventas}</div>
-                    </div>
-                    <div className="resumen-card">
-                        <h4>Producto más vendido del mes</h4>
-                        <FaStar className="kpi-icon" />
-                        <div className="resumen-card-value">${resumenInventario.ganancias}</div>
-                    </div>
-                    <div className="resumen-card">
-                        <h4>Productos con bajo stock</h4>
-                        <FaBoxOpen className="kpi-icon" />
-                        <div className="resumen-card-value">${resumenInventario.ganancias}</div>
-                    </div>
-                    <div className="resumen-card">
-                        <h4>Productos próximos a vencer</h4>
-                        <FaClock className="kpi-icon" />
-                        <div className="resumen-card-value">${resumenInventario.ganancias}</div>
-                    </div>
-                </div>
-                {/* Gráficos a la derecha */}
-                <div className="dashboard-graficos-grid">
-                    <div className="grafico">
-                        <div className="dashboard-section grafico">
-                            <h3>Evolución de ventas</h3>
-                            <ResponsiveContainer width="100%" height={220}>
-                                <LineChart data={ventasPorMes}>
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="mes" />
-                                    <YAxis />
-                                    <Tooltip />
-                                    <Legend />
-                                    <Line type="monotone" dataKey="ventas" stroke="#1769aa" />
-                                </LineChart>
-                            </ResponsiveContainer>
+                <div className="dashboard-graficos-kpi-layout">
+                    {/* KPIs a la izquierda */}
+                    <div className="dashboard-kpi-card">
+                        <div className="resumen-card">
+                            <h4>Ingresos del mes</h4>
+                            <FaDollarSign className="kpi-icon" />
+                            <div className="resumen-card-value">${resumenInventario.ingresosMes}</div>
+                        </div>
+                        <div className="resumen-card">
+                            <h4>Ganancia neta del mes</h4>
+                            <FaChartLine className="kpi-icon" />
+                            <div className="resumen-card-value">${resumenInventario.gananciaNeta}</div>
+                        </div>
+                        <div className="resumen-card">
+                            <h4>Producto más vendido del mes</h4>
+                            <FaStar className="kpi-icon" />
+                            <div className="resumen-card-value">{resumenInventario.productoMasVendido}</div>
+                        </div>
+                        <div className="resumen-card">
+                            <h4>Productos con bajo stock</h4>
+                            <FaBoxOpen className="kpi-icon" />
+                            <div className="resumen-card-value">{resumenInventario.productosBajoStock}</div>
+                        </div>
+                        <div className="resumen-card">
+                            <h4>Productos próximos a vencer</h4>
+                            <FaClock className="kpi-icon" />
+                            <div className="resumen-card-value">{resumenInventario.productosProximosAVencer}</div>
                         </div>
                     </div>
-                    <div className="grafico">
+                    {/* Gráficos a la derecha */}
+                    <div className="dashboard-graficos-grid">
+                        <div className="grafico">
+                            <div className="dashboard-section grafico">
+                                <h3>Evolución de ventas</h3>
+                                <ResponsiveContainer width="100%" height={220}>
+                                    <LineChart data={ventasPorMes}>
+                                        <CartesianGrid strokeDasharray="3 3" />
+                                        <XAxis dataKey="mes" />
+                                        <YAxis />
+                                        <Tooltip />
+                                        <Legend />
+                                        <Line type="monotone" dataKey="ventas" stroke="#1769aa" />
+                                    </LineChart>
+                                </ResponsiveContainer>
+                            </div>
+                        </div>
+                        <div className="grafico">
                         <div className="dashboard-section grafico">
                             <h3>Rotación de productos</h3>
                             <ResponsiveContainer width="100%" height={220}>
