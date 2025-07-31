@@ -5,7 +5,7 @@ import {
   BarChart, Bar, PieChart, Pie, Cell
 } from 'recharts';
 
-import { FaDollarSign, FaChartLine, FaBoxOpen, FaStar } from 'react-icons/fa';
+import { FaDollarSign, FaChartLine, FaBoxOpen, FaStar, FaClock} from 'react-icons/fa';
 
 
 
@@ -56,7 +56,7 @@ const Dashboard = ({ dashboardData }) => {
                     </div>
                     <div className="resumen-card">
                         <h4>Productos próximos a vencer</h4>
-                        <FaStar className="kpi-icon" />
+                        <FaClock className="kpi-icon" />
                         <div className="resumen-card-value">${resumenInventario.ganancias}</div>
                     </div>
                 </div>
