@@ -28,6 +28,7 @@
   align-items: center;
   transition: box-shadow 0.2s;
   border: 1px solid #e3e6f0;
+  
 }
 .resumen-card:hover {
   box-shadow: 0 4px 16px rgba(26,35,126,0.10);
@@ -219,10 +220,29 @@
 }
 
 .kpi-icon {
-  color: #1769aa; /* o el color que tú quieras */
+  color: var(--color-text-disabled); /* o el color que tú quieras */
   font-size: 3em;
   position: absolute;
   align-self: flex-start;
   margin-left: 1rem
 }
 
+.kpi-info-btn{
+  position: absolute;
+  align-self: flex-end;
+  /* font-size: 1.2rem; */
+  background-color: transparent;
+  /* text-decoration: none; */
+  cursor: pointer;
+  border-color: none;
+  margin: .1rem .5rem;
+  border: none;
+}
+
+.kpi-info-icon{
+  margin: .1em;
+}
+
+.kpi-info-icon:hover{
+  color: #1769aa; /* o el color que tú quieras */
+}
