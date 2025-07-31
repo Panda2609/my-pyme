@@ -5,6 +5,8 @@ import {
   BarChart, Bar, PieChart, Pie, Cell
 } from 'recharts';
 
+import { FaDollarSign, FaChartLine, FaBoxOpen, FaStar } from 'react-icons/fa';
+
 
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#B8860B'];
@@ -28,10 +30,38 @@ const Dashboard = ({ dashboardData }) => {
                     <h2>Dashboard</h2>
                 </div>
 
-            <div className="dashboard-graficos-kpi-layout">
-                {/* Izquierda: 4 gráficos en grilla 2x2 */}
-                <div className="dashboard-graficos-grid">
 
+            <div className="dashboard-graficos-kpi-layout">
+                {/* KPIs a la izquierda */}
+                <div className="dashboard-kpi-card">
+                    <div className="resumen-card">
+                        <h4>Ingresos del mes</h4>
+                        <FaDollarSign className="kpi-icon" />
+                        <div className="resumen-card-value">${resumenInventario.costos}</div>
+                    </div>
+                    <div className="resumen-card">
+                        <h4>Ganancia neta del mes</h4>
+                        <FaChartLine className="kpi-icon" />
+                        <div className="resumen-card-value">{resumenInventario.ventas}</div>
+                    </div>
+                    <div className="resumen-card">
+                        <h4>Producto más vendido del mes</h4>
+                        <FaStar className="kpi-icon" />
+                        <div className="resumen-card-value">${resumenInventario.ganancias}</div>
+                    </div>
+                    <div className="resumen-card">
+                        <h4>Productos con bajo stock</h4>
+                        <FaBoxOpen className="kpi-icon" />
+                        <div className="resumen-card-value">${resumenInventario.ganancias}</div>
+                    </div>
+                    <div className="resumen-card">
+                        <h4>Productos próximos a vencer</h4>
+                        <FaStar className="kpi-icon" />
+                        <div className="resumen-card-value">${resumenInventario.ganancias}</div>
+                    </div>
+                </div>
+                {/* Gráficos a la derecha */}
+                <div className="dashboard-graficos-grid">
                     <div className="grafico">
                         <div className="dashboard-section grafico">
                             <h3>Evolución de ventas</h3>
@@ -47,7 +77,6 @@ const Dashboard = ({ dashboardData }) => {
                             </ResponsiveContainer>
                         </div>
                     </div>
-
                     <div className="grafico">
                         <div className="dashboard-section grafico">
                             <h3>Rotación de productos</h3>
@@ -63,7 +92,6 @@ const Dashboard = ({ dashboardData }) => {
                             </ResponsiveContainer>
                         </div>
                     </div>
-                    
                     <div className="grafico">
                         <div className="dashboard-section grafico">
                             <h3>Stock por categoría</h3>
@@ -89,7 +117,6 @@ const Dashboard = ({ dashboardData }) => {
                             </ResponsiveContainer>
                         </div>
                     </div>
-                    
                     <div className="grafico">
                         <div className="dashboard-section grafico">
                             <h3>Productos próximos a vencer</h3>
@@ -104,26 +131,8 @@ const Dashboard = ({ dashboardData }) => {
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
-
                     </div>
                 </div>
-
-                {/* Derecha: tarjeta de KPIs */}
-                <div className="dashboard-kpi-card">
-                    <div className="resumen-card">
-                    <h4>Costos</h4>
-                    <div className="resumen-card-value">${resumenInventario.costos}</div>
-                    </div>
-                    <div className="resumen-card">
-                    <h4>Ventas</h4>
-                    <div className="resumen-card-value">{resumenInventario.ventas}</div>
-                    </div>
-                    <div className="resumen-card">
-                    <h4>Ganancias</h4>
-                    <div className="resumen-card-value">${resumenInventario.ganancias}</div>
-                    </div>
-                </div>
-
             </div>
 
                 <div className="dashboard-listados-row">
