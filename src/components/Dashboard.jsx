@@ -144,7 +144,7 @@ const Dashboard = ({ dashboardData }) => {
                 <div className="resumen-card-value">{resumenInventario.productosBajoStock}</div>
               </div>
               <div className="resumen-card">
-                <button className='kpi-info-btn' title="Ver más" onClick={() => setModal('proximosVencer')}>
+                <button className='kpi-info-btn' title="Ver más"onClick={() => setModal('proximosVencer')}>
                   <FaExternalLinkAlt className="kpi-info-icon" />
                 </button>
                 <h4>Productos próximos a vencer</h4>
@@ -154,28 +154,27 @@ const Dashboard = ({ dashboardData }) => {
             </div>
                     {/* Gráficos a la derecha */}
                     <div className="dashboard-graficos-grid">
-                        <div className="grafico">
-                            <div className="dashboard-section grafico">
-                                <h3>Evolución de ventas</h3>
-                                <ResponsiveContainer width="100%" height={220}>
-                                    <LineChart data={ventasPorMes}>
-                                        <CartesianGrid strokeDasharray="3 3" />
-                                        <XAxis dataKey="mes" />
-                                        <YAxis />
-                                        <Tooltip />
-                                        <Legend />
-                                        <Line type="monotone" dataKey="ventas" stroke="#1769aa" />
-                                    </LineChart>
-                                </ResponsiveContainer>
-                            </div>
+                        
+                        <div className="dashboard-section grafico">
+                            <h3>Evolución de ventas</h3>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <LineChart data={ventasPorMes}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="mes" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Line type="monotone" dataKey="ventas" stroke="#1769aa" />
+                                </LineChart>
+                            </ResponsiveContainer>
                         </div>
-                        <div className="grafico">
+                        
                         <div className="dashboard-section grafico">
                             <h3>Rotación de productos</h3>
-                            <ResponsiveContainer width="100%" height={220}>
+                            <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={rotacionProductos}>
                                     <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="nombre" />
+                                    <XAxis dataKey="nombre"/>
                                     <YAxis />
                                     <Tooltip />
                                     <Legend />
@@ -183,11 +182,10 @@ const Dashboard = ({ dashboardData }) => {
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
-                    </div>
-                    <div className="grafico">
+                
                         <div className="dashboard-section grafico">
                             <h3>Stock por categoría</h3>
-                            <ResponsiveContainer width="100%" height={220}>
+                            <ResponsiveContainer width="100%" height="100%">
                                 <PieChart>
                                     <Pie
                                         data={stockPorCategoria}
@@ -208,22 +206,21 @@ const Dashboard = ({ dashboardData }) => {
                                 </PieChart>
                             </ResponsiveContainer>
                         </div>
-                    </div>
-                    <div className="grafico">
+                
                         <div className="dashboard-section grafico">
                             <h3>Productos próximos a vencer</h3>
-                            <ResponsiveContainer width="100%" height={220}>
-                                <BarChart data={productosProximosAVencer}>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <BarChart data={productosProximosAVencer.map(p => ({...p, cantidad: p.cantidad || 1}))}>
                                     <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="nombre" />
+                                    <XAxis dataKey="nombre"/>
                                     <YAxis />
                                     <Tooltip />
                                     <Legend />
-                                    <Bar dataKey="vence" fill="#ffc658" />
+                                    <Bar dataKey="cantidad" fill="#ffc658" />
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
             </div>
