@@ -122,6 +122,7 @@ const ProductList = ({ products }) => {
                       <FaEdit
                         onClick={() => handleEdit(p.id)}
                         title="Editar" // Tooltip al pasar el mouse
+                        className="edit-icon" // Clase específica para el icono de editar
                       />
                       <FaTrash
                         onClick={() => handleDelete(p.id)}

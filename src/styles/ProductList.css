@@ -71,22 +71,21 @@
 .product-list-container .action-icons {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Espacio entre iconos */
+  gap: 2em; /* Espacio entre iconos */
 }
 
 .product-list-container .action-icons svg {
   cursor: pointer;
-  font-size: 1.2em; /* Tamaño del icono */
+  font-size: 1.3em; /* Tamaño del icono */
   transition: color 0.2s ease-in-out;
 }
 
-.product-list-container .action-icons svg:hover {
-  color: #007bff; /* Color al pasar el mouse */
+.product-list-container .action-icons .delete-icon{
+  color: var(--color-danger);
 }
 
-/* Estilo específico para el icono de eliminar */
-.product-list-container .action-icons .delete-icon:hover {
-  color: #dc3545; /* Color rojo al pasar el mouse sobre eliminar */
+.product-list-container .action-icons .edit-icon{
+  color: var(--color-important);
 }
 
 /* Estilo para el mensaje de "No hay productos" */
