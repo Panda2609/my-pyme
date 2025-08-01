@@ -20,15 +20,16 @@
 
 /* Estilos para el botón de página actual (activo) */
 .pagination-container button.active {
-  background-color: #007bff; /* Fondo azul para la página activa */
+  background-color: var(--color-primary); /* Borde azul */
   color: white; /* Texto blanco para la página activa */
-  border-color: #007bff; /* Borde azul */
+  border-color: var(--color-primary); /* Borde azul */
   font-weight: bold; /* Texto en negrita */
 }
 
 /* Estilos al pasar el mouse sobre los botones (excepto el activo y deshabilitados) */
 .pagination-container button:not(.active):not(:disabled):hover {
-  background-color: #e9e9e9; /* Fondo gris claro al pasar el mouse */
+  background-color: var(--color-primary); /* Borde azul */
+  color: white; /* Texto blanco para la página activa */
 }
 
 /* Estilos para botones deshabilitados */
