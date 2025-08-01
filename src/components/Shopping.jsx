@@ -48,7 +48,9 @@ const Shopping = () => {
 
   return (
     <div className="shopping-container">
-      <h2>Compras (Ingresos de stock)</h2>
+      <div className='section-header'>
+          <h2>Compras de productos</h2>
+        </div>
       <div className="filter-search-row">
         <SearchBar value={search} onChange={setSearch} placeholder="Buscar por proveedor o factura..." />
         <ProductFilters filters={filters} onChange={setFilters} hideStatus hideCategory hideStock hidePrice hideProvider />

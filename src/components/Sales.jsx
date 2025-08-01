@@ -46,7 +46,9 @@ const Sales = () => {
 
   return (
     <div className="sales-container">
-      <h2>Ventas</h2>
+      <div className='section-header'>
+          <h2>Ventas</h2>
+        </div>
       <div className="filter-search-row">
         <SearchBar value={search} onChange={setSearch} />
         <ProductFilters filters={filters} onChange={setFilters} />

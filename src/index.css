@@ -21,6 +21,15 @@ h2 {
   margin: 1rem;
 }
 
+.section-header{
+  display: flex;
+  padding: 1rem;
+  background: var(--color-bg-light);
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+}
+
 :root {
   --color-bg-main: #1A202C;
   --color-bg-secondary: #232b3a;

@@ -47,7 +47,9 @@ const Providers = () => {
 
   return (
     <div className="providers-container">
-      <h2>Proveedores</h2>
+      <div className='section-header'>
+          <h2>Proveedores</h2>
+        </div>
       <div className="filter-search-row">
         <SearchBar value={search} onChange={setSearch} />
         <button className="add-provider-btn" >

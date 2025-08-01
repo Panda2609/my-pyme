@@ -9,15 +9,6 @@
   height: 100vh;
 }
 
-.product-list-header{
-  display: flex;
-  padding: 1rem;
-  background: var(--color-bg-light);
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius);
-}
-
 /* Estilos para la barra de búsqueda y filtros */
 .filter-search-row {
   display: flex;

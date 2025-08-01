@@ -63,7 +63,7 @@ const ProductList = ({ products }) => {
     // Aplicar clase CSS al contenedor principal
     <>
       <div className="product-list-container">
-        <div className='product-list-header'>
+        <div className='section-header'>
           <h2>Lista de Productos</h2>
         </div>
         

@@ -40,7 +40,10 @@ const Client = () => {
 
   return (
     <div className="client">
-      <h2>Clientes</h2>
+      <div className="section-header">
+        <h2>Clientes</h2>
+
+      </div>
       <div className="filter-search-row">
         <SearchBar value={search} onChange={setSearch} />
       </div>
