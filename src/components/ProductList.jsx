@@ -22,7 +22,7 @@ const ProductList = ({ products }) => {
   // Estados de búsqueda y paginación
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 12;
 
   // Filtrar productos
   const filtered = allProducts

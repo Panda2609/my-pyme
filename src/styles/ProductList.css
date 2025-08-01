@@ -12,7 +12,7 @@
 .product-list-header{
   display: flex;
   padding: 1rem;
-  background: #fff;
+  background: var(--color-bg-light);
   border-bottom: 1px solid #e2e8f0;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
@@ -30,19 +30,31 @@
 .product-list-container table {
   width: 100%;
   border-collapse: collapse;
+  border: none;
   max-width: 100%;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: var(--box-shadow);
+  /* min-height: 100vh; */
+  /* height: 100vh; */
 }
 
 .product-list-container th,
 .product-list-container td {
-  border: 1px solid #ddd;
+  border: none;
   padding: 12px;
   text-align: left;
 }
 
+.product-list-container tr{
+  background-color: var(--color-bg-light);
+  
+}
+
 .product-list-container th {
-  background-color: #f2f2f2;
+  background-color: var( --color-bg-main);
   font-weight: bold;
+  /* border-radius: var(--border-radius); */
+  color: var(--color-bg-light);
 }
 
 .product-list-container tbody tr:nth-child(even) {
@@ -87,7 +99,7 @@
 /* Estilos para el botón de agregar producto */
 .add-product-btn {
   padding: 0rem 2rem;
-  background-color: #007bff;
+  background-color: var(--color-primary);
   color: #fff;
   border: none;
   border-radius: var(--border-radius);
