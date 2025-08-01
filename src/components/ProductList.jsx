@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import ProductFilters from './ProductFilters';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 import '../styles/ProductList.css'
 
 
@@ -63,8 +63,10 @@ const ProductList = ({ products }) => {
     // Aplicar clase CSS al contenedor principal
     <>
       <div className="product-list-container">
-        {/* Título de la lista de productos */}
-        <h2>Lista de Productos</h2>
+        <div className='product-list-header'>
+          <h2>Lista de Productos</h2>
+        </div>
+        
         {/* Fila combinada para búsqueda, filtros y botón */}
         <div className="filter-search-row">
           <SearchBar value={search} onChange={setSearch} />
@@ -73,7 +75,8 @@ const ProductList = ({ products }) => {
             className="add-product-btn"
             onClick={() => console.log('Botón Agregar Producto presionado')}
           >
-            Agregar Producto
+            <FaPlus className="icon-btn" />
+            Añadir
           </button>
         </div>
 
