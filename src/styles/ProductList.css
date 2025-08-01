@@ -42,7 +42,7 @@
 .product-list-container td {
   border: none;
   padding: 12px;
-  text-align: left;
+  text-align: center;
 }
 
 .product-list-container tr{
@@ -135,13 +135,14 @@
   font-size: 0.95em;
   font-weight: 500;
   display: inline-block;
+  width: 60%;
 }
 
 .status-badge.disponible {
   background: var(--color-success);
 }
 
-.status-badge.porcaducar {
+.status-badge.venciendo {
   background: var(--color-important);
 }
 
