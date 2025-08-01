@@ -54,7 +54,7 @@ const mockProducts = [
     precio: 1200,
     proveedor: 'Sony',
     date: '2025-05-28',
-   status: 'Por caducar'
+   status: 'Venciendo'
   },
   {
     id: 6,
@@ -65,7 +65,7 @@ const mockProducts = [
     precio: 3500,
     proveedor: 'Lenovo',
     date: '2025-05-29',
-    status: 'Por caducar'
+    status: 'Venciendo'
   },
 
   {
@@ -76,7 +76,7 @@ const mockProducts = [
     categoria: 'Accesorios',
     precio: 600,
     proveedor: 'Logitech',
-    status: 'Por caducar'
+    status: 'Venciendo'
   },
   {
     id: 9,
@@ -86,7 +86,7 @@ const mockProducts = [
     categoria: 'Electrónica',
     precio: 900,
     proveedor: 'TP-Link',
-    status: 'Por caducar'
+    status: 'Venciendo'
   },
   {
     id: 10,
@@ -96,7 +96,7 @@ const mockProducts = [
     categoria: 'Accesorios',
     precio: 200,
     proveedor: 'Kingston',
-    status: 'Por caducar'
+    status: 'Venciendo'
   },
   {
     id: 11,
@@ -106,7 +106,7 @@ const mockProducts = [
     categoria: 'Electrónica',
     precio: 1100,
     proveedor: 'Dell',
-    status: 'Por caducar'
+    status: 'Venciendo'
   },
   {
     id: 12,
@@ -116,7 +116,7 @@ const mockProducts = [
     categoria: 'Accesorios',
     precio: 350,
     proveedor: 'Genius',
-    status: 'Por caducar'
+    status: 'Venciendo'
   },
   {
     id: 13,

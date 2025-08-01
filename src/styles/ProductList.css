@@ -137,11 +137,15 @@
   display: inline-block;
 }
 
-.status-badge.activo {
-  background: #28a745;
+.status-badge.disponible {
+  background: var(--color-success);
 }
 
-.status-badge.inactivo {
-  background: #dc3545;
+.status-badge.porcaducar {
+  background: var(--color-important);
+}
+
+.status-badge.agotado {
+  background: var(--color-danger);
 }
 
