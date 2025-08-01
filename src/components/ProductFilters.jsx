@@ -9,7 +9,7 @@ const ProductFilters = ({ filters, onChange }) => {
   };
 
   return (
-    <div className="product-filters-container">
+    <>
       <label className="product-filters-label">
         Estado:&nbsp;
         <select
@@ -43,7 +43,7 @@ const ProductFilters = ({ filters, onChange }) => {
           onChange={handleChange}
         />
       </label>
-    </div>
+    </>
   );
 };
 

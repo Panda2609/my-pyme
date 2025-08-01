@@ -10,7 +10,7 @@ const mockProducts = [
     precio: 15000,
     proveedor: 'HP',
     date: '2025-05-24',
-    status: 'Activo'
+    status: 'Disponible'
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const mockProducts = [
     precio: 350,
     proveedor: 'Logitech',
     date: '2025-05-25',
-    status: 'Activo'
+    status: 'Disponible'
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const mockProducts = [
     precio: 4200,
     proveedor: 'Samsung',
     date: '2025-05-26',
-    status: 'Activo'
+    status: 'Disponible'
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const mockProducts = [
     precio: 800,
     proveedor: 'Redragon',
     date: '2025-05-27',
-    status: 'Inactivo'
+    status: 'Agotado'
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ const mockProducts = [
     precio: 1200,
     proveedor: 'Sony',
     date: '2025-05-28',
-    status: 'Activo'
+   status: 'Venciendo'
   },
   {
     id: 6,
@@ -65,18 +65,240 @@ const mockProducts = [
     precio: 3500,
     proveedor: 'Lenovo',
     date: '2025-05-29',
-    status: 'Activo'
+    status: 'Venciendo',
+    date: '2025-06-01'
+  },
+
+  {
+    id: 8,
+    name: 'Webcam Logitech',
+    codigo: 'LOG008',
+    cantidad: 10,
+    categoria: 'Accesorios',
+    precio: 600,
+    proveedor: 'Logitech',
+    status: 'Venciendo',
+    date: '2025-06-02'
   },
   {
-    id: 7,
-    name: 'Impresora Epson',
-    codigo: 'EPS007',
+    id: 9,
+    name: 'Router TP-Link',
+    codigo: 'TPL009',
+    cantidad: 7,
+    categoria: 'Electrónica',
+    precio: 900,
+    proveedor: 'TP-Link',
+    status: 'Venciendo',
+    date: '2025-06-03'
+  },
+  {
+    id: 10,
+    name: 'USB Kingston',
+    codigo: 'KIN010',
+    cantidad: 25,
+    categoria: 'Accesorios',
+    precio: 200,
+    proveedor: 'Kingston',
+    status: 'Venciendo',
+    date: '2025-06-04'
+  },
+  {
+    id: 11,
+    name: 'Batería Dell',
+    codigo: 'DEL011',
+    cantidad: 4,
+    categoria: 'Electrónica',
+    precio: 1100,
+    proveedor: 'Dell',
+    status: 'Venciendo',
+    date: '2025-06-05'
+  },
+  {
+    id: 12,
+    name: 'Teclado Genius',
+    codigo: 'GEN012',
+    cantidad: 9,
+    categoria: 'Accesorios',
+    precio: 350,
+    proveedor: 'Genius',
+    status: 'Venciendo',
+    date: '2024-03-01'
+  },
+  {
+    id: 13,
+    name: 'Monitor LG',
+    codigo: 'LG013',
+    cantidad: 6,
+    categoria: 'Electrónica',
+    precio: 4100,
+    proveedor: 'LG',
+    date: '2025-06-06',
+    status: 'Disponible'
+  },
+  {
+    id: 14,
+    name: 'Cargador Lenovo',
+    codigo: 'LEN014',
+    cantidad: 13,
+    categoria: 'Accesorios',
+    precio: 450,
+    proveedor: 'Lenovo',
+    date: '2025-06-07',
+    status: 'Disponible'
+  },
+  {
+    id: 15,
+    name: 'Tablet Samsung',
+    codigo: 'SAM015',
     cantidad: 5,
+    categoria: 'Electrónica',
+    precio: 3700,
+    proveedor: 'Samsung',
+    date: '2025-06-08',
+    status: 'Agotado'
+  },
+  {
+    id: 16,
+    name: 'Auriculares JBL',
+    codigo: 'JBL016',
+    cantidad: 18,
+    categoria: 'Electrónica',
+    precio: 1300,
+    proveedor: 'JBL',
+    date: '2025-06-09',
+    status: 'Disponible'
+  },
+  {
+    id: 17,
+    name: 'Mouse HP',
+    codigo: 'HP017',
+    cantidad: 14,
+    categoria: 'Accesorios',
+    precio: 320,
+    proveedor: 'HP',
+    date: '2025-06-10',
+    status: 'Disponible'
+  },
+  {
+    id: 18,
+    name: 'Impresora Canon',
+    codigo: 'CAN018',
+    cantidad: 3,
     categoria: 'Impresoras',
-    precio: 4200,
-    proveedor: 'Epson',
-    date: '2025-05-30',
-    status: 'Inactivo'
+    precio: 4300,
+    proveedor: 'Canon',
+    date: '2025-06-11',
+    status: 'Disponible'
+  },
+  {
+    id: 19,
+    name: 'Monitor Philips',
+    codigo: 'PHI019',
+    cantidad: 8,
+    categoria: 'Electrónica',
+    precio: 4000,
+    proveedor: 'Philips',
+    date: '2025-06-12',
+    status: 'Disponible'
+  },
+  {
+    id: 20,
+    name: 'Tablet Huawei',
+    codigo: 'HUA020',
+    cantidad: 7,
+    categoria: 'Electrónica',
+    precio: 3600,
+    proveedor: 'Huawei',
+    date: '2025-06-13',
+    status: 'Agotado'
+  },
+  {
+    id: 21,
+    name: 'Auriculares Bose',
+    codigo: 'BOS021',
+    cantidad: 11,
+    categoria: 'Electrónica',
+    precio: 2100,
+    proveedor: 'Bose',
+    date: '2025-06-14',
+    status: 'Disponible'
+  },
+  {
+    id: 22,
+    name: 'Teclado Logitech',
+    codigo: 'LOG022',
+    cantidad: 16,
+    categoria: 'Accesorios',
+    precio: 400,
+    proveedor: 'Logitech',
+    date: '2025-06-15',
+    status: 'Disponible'
+  },
+  {
+    id: 23,
+    name: 'Impresora Brother',
+    codigo: 'BRO023',
+    cantidad: 2,
+    categoria: 'Impresoras',
+    precio: 4100,
+    proveedor: 'Brother',
+    date: '2025-06-16',
+    status: 'Disponible'
+  },
+  {
+    id: 24,
+    name: 'Monitor Acer',
+    codigo: 'ACE024',
+    cantidad: 9,
+    categoria: 'Electrónica',
+    precio: 3900,
+    proveedor: 'Acer',
+    date: '2025-06-17',
+    status: 'Disponible'
+  },
+  {
+    id: 25,
+    name: 'Tablet Apple',
+    codigo: 'APP025',
+    cantidad: 6,
+    categoria: 'Electrónica',
+    precio: 8000,
+    proveedor: 'Apple',
+    date: '2025-06-18',
+    status: 'Disponible'
+  },
+  {
+    id: 26,
+    name: 'Auriculares Panasonic',
+    codigo: 'PAN026',
+    cantidad: 10,
+    categoria: 'Electrónica',
+    precio: 1100,
+    proveedor: 'Panasonic',
+    date: '2025-06-19',
+    status: 'Agotado'
+  },
+  {
+    id: 27,
+    name: 'Mouse Genius',
+    codigo: 'GEN027',
+    cantidad: 17,
+    categoria: 'Accesorios',
+    precio: 310,
+    proveedor: 'Genius',
+    date: '2025-06-20',
+    status: 'Disponible'
+  },
+  {
+    id: 28,
+    name: 'Impresora Samsung',
+    codigo: 'SAM028',
+    cantidad: 4,
+    categoria: 'Impresoras',
+    precio: 4400,
+    proveedor: 'Samsung',
+    date: '2025-06-21',
+    status: 'Disponible'
   }
 ];
 

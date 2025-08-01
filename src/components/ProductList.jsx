@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import ProductFilters from './ProductFilters';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 import '../styles/ProductList.css'
 
 
@@ -22,7 +22,7 @@ const ProductList = ({ products }) => {
   // Estados de búsqueda y paginación
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 12;
 
   // Filtrar productos
   const filtered = allProducts
@@ -63,8 +63,10 @@ const ProductList = ({ products }) => {
     // Aplicar clase CSS al contenedor principal
     <>
       <div className="product-list-container">
-        {/* Título de la lista de productos */}
-        <h2>Lista de Productos</h2>
+        <div className='product-list-header'>
+          <h2>Lista de Productos</h2>
+        </div>
+        
         {/* Fila combinada para búsqueda, filtros y botón */}
         <div className="filter-search-row">
           <SearchBar value={search} onChange={setSearch} />
@@ -73,7 +75,8 @@ const ProductList = ({ products }) => {
             className="add-product-btn"
             onClick={() => console.log('Botón Agregar Producto presionado')}
           >
-            Agregar Producto
+            <FaPlus className="icon-btn" />
+            Añadir
           </button>
         </div>
 
@@ -111,7 +114,11 @@ const ProductList = ({ products }) => {
                   <td>{p.precio}</td>
                   <td>{p.proveedor}</td>
                   <td>{p.date}</td>
-                  <td>{p.status}</td>
+                  <td>
+                    <span className={`status-badge ${p.status.toLowerCase()}`}>
+                      {p.status}
+                    </span>
+                  </td>
                   <td>
                     {/* Contenedor para los iconos de acción */}
                     <div className="action-icons">
@@ -119,6 +126,7 @@ const ProductList = ({ products }) => {
                       <FaEdit
                         onClick={() => handleEdit(p.id)}
                         title="Editar" // Tooltip al pasar el mouse
+                        className="edit-icon" // Clase específica para el icono de editar
                       />
                       <FaTrash
                         onClick={() => handleDelete(p.id)}

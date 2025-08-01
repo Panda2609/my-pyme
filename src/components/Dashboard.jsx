@@ -212,7 +212,7 @@ const Dashboard = ({ dashboardData }) => {
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={productosProximosAVencer.map(p => ({...p, cantidad: p.cantidad || 1}))}>
                                     <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="nombre"/>
+                                    <XAxis dataKey="nombre" />
                                     <YAxis />
                                     <Tooltip />
                                     <Legend />
