@@ -128,3 +128,20 @@
   gap: 1rem; /* Espacio entre el icono y el texto */
 }
 
+.status-badge {
+  padding: 0.2em 0.7em;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95em;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.status-badge.activo {
+  background: #28a745;
+}
+
+.status-badge.inactivo {
+  background: #dc3545;
+}
+

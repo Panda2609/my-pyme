@@ -114,7 +114,11 @@ const ProductList = ({ products }) => {
                   <td>{p.precio}</td>
                   <td>{p.proveedor}</td>
                   <td>{p.date}</td>
-                  <td>{p.status}</td>
+                  <td>
+                    <span className={`status-badge ${p.status.toLowerCase()}`}>
+                      {p.status}
+                    </span>
+                  </td>
                   <td>
                     {/* Contenedor para los iconos de acción */}
                     <div className="action-icons">
