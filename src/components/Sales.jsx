@@ -6,7 +6,7 @@ import ProductFilters from './ProductFilters';
 import Pagination from './Pagination';
 import '../styles/Sales.css';
 import { ITEMS_PER_PAGE } from "../configs";
-import { FaPlus, FaFileUpload } from 'react-icons/fa';
+import { FaPlus, FaFileUpload, FaEdit, FaTrash} from 'react-icons/fa';
 
 const Sales = () => {
   const [search, setSearch] = useState("");
@@ -75,8 +75,8 @@ const Sales = () => {
           <tr>
             <th>Fecha</th>
             <th>Cliente</th>
-            <th>Productos</th>
             <th>Total</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -89,12 +89,23 @@ const Sales = () => {
               <tr key={venta.id}>
                 <td>{venta.fecha}</td>
                 <td>{venta.cliente}</td>
-                <td>
-                  <button className="eye-btn" title="Ver productos" onClick={() => handleShowProductos(venta)}>
-                    <FaEye />
-                  </button>
-                </td>
                 <td>${venta.total.toLocaleString('es-CL')}</td>
+                <td>
+                  <div className="btn-action-container">
+                    <button className="details-btn" title="Ver historial">
+                      <FaEye/>
+                      Ver Detalle
+                    </button>
+                    <button className="edit-btn" title="Editar">
+                      <FaEdit />
+                      Editar
+                    </button>
+                    <button className="delete-btn" title="Eliminar" >
+                      <FaTrash />
+                      Eliminar
+                    </button>
+                  </div>
+                </td>
               </tr>
             ))
           )}

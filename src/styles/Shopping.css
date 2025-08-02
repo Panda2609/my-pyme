@@ -44,19 +44,6 @@
   background: #4a5568;
 }
 
-.eye-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #4a5568;
-  font-size: 1em;
-  padding: 0.2em 0.5em;
-  transition: color 0.2s;
-}
-.eye-btn:hover {
-  color: #2b6cb0;
-}
-
 .status-badge {
   padding: 0.2em 0.7em;
   border-radius: 12px;
@@ -74,3 +61,4 @@
 .status-badge.pendiente {
   background: var(--color-important);
 }
+

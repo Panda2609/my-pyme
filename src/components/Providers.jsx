@@ -88,7 +88,7 @@ const Providers = () => {
             <th>Email</th>
             <th>Teléfono</th>
             <th>Dirección</th>
-            <th>Productos</th>
+            {/* <th>Productos</th> */}
             <th>Fecha de contratación</th>
             <th>Acciones</th>
           </tr>
@@ -105,18 +105,23 @@ const Providers = () => {
                 <td>{provider.email}</td>
                 <td>{provider.telefono}</td>
                 <td>{provider.direccion}</td>
-                <td>{provider.productos.join(', ')}</td>
+                {/* <td>{provider.productos.join(', ')}</td> */}
                 <td>{provider.fechaContratacion}</td>
                 <td>
-                  <button className="providers-action-btn" title="Ver historial" onClick={() => handleShowHistorial(provider)}>
-                    <FaEye />
-                  </button>
-                  <button className="providers-action-btn" title="Editar">
-                    <FaEdit />
-                  </button>
-                  <button className="providers-action-btn" title="Eliminar" >
-                    <FaTrash />
-                  </button>
+                  <div className="btn-action-container">
+                    <button className="details-btn" title="Ver historial" onClick={() => handleShowHistorial(provider)}>
+                      <FaEye />
+                      Ver detalle
+                    </button>
+                    <button className="edit-btn" title="Editar">
+                      <FaEdit />
+                      Editar
+                    </button>
+                    <button className="delete-btn" title="Eliminar" >
+                      <FaTrash />
+                      Eliminar
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))
