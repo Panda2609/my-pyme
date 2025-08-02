@@ -4,6 +4,7 @@ import Pagination from './Pagination';
 import ProductFilters from './ProductFilters';
 import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 import '../styles/ProductList.css'
+import { ITEMS_PER_PAGE } from "../configs";  
 
 
 
@@ -22,7 +23,7 @@ const ProductList = ({ products }) => {
   // Estados de búsqueda y paginación
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = ITEMS_PER_PAGE;
 
   // Filtrar productos
   const filtered = allProducts
@@ -63,7 +64,7 @@ const ProductList = ({ products }) => {
     // Aplicar clase CSS al contenedor principal
     <>
       <div className="product-list-container">
-        <div className='product-list-header'>
+        <div className='section-header'>
           <h2>Lista de Productos</h2>
         </div>
         
@@ -81,7 +82,7 @@ const ProductList = ({ products }) => {
         </div>
 
         {/* Tabla de productos */}
-        <table border="1" cellPadding="10" cellSpacing="0">
+        <table>
 
           <thead>
             <tr>

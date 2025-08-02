@@ -116,58 +116,6 @@
   padding: 0.3rem 0.2rem;
 }
 
-
-@media (max-width: 1100px) {
-  
-  .dashboard-listados-row {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .dashboard-container {
-    padding: 1rem;
-    gap: 1.2rem;
-  }
- 
-  .dashboard-graficos-row,
-  .dashboard-listados-row {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .resumen-card,
-  .dashboard-section,
-  .dashboard-section.grafico {
-    width: 100%;
-    min-width: 0;
-    align-items: stretch;
-  }
-}
-
-@media (max-width: 600px) {
-  .dashboard-container h2 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-  }
-  .resumen-card h4,
-  .dashboard-section h3,
-  .dashboard-section.grafico h3 {
-    font-size: 1rem;
-  }
-  .resumen-card-value {
-    font-size: 1.2rem;
-  }
-  .scrollable-list {
-    width: 100%;
-    padding-left: 0.7rem;
-  }
-  .dashboard-section,
-  .dashboard-section.grafico {
-    padding: 0.5rem;
-  }
-}
-
 .dashboard-section.grafico {
   flex: 1;
   background: #fff;

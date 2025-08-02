@@ -5,6 +5,7 @@ import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import '../styles/Providers.css';
+import { ITEMS_PER_PAGE } from "../configs";  
 
 const Providers = () => {
   const [showModal, setShowModal] = useState(false);
@@ -38,7 +39,7 @@ const Providers = () => {
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = ITEMS_PER_PAGE;
   const totalPages = Math.ceil(filteredProviders.length / itemsPerPage);
   const paginatedProviders = filteredProviders.slice(
     (currentPage - 1) * itemsPerPage,
@@ -47,14 +48,16 @@ const Providers = () => {
 
   return (
     <div className="providers-container">
-      <h2>Proveedores</h2>
+      <div className='section-header'>
+          <h2>Proveedores</h2>
+        </div>
       <div className="filter-search-row">
         <SearchBar value={search} onChange={setSearch} />
         <button className="add-provider-btn" >
-          Agregar proveedor
+          Añadir
         </button>
       </div>
-      <table className="providers-table">
+      <table>
         <thead>
           <tr>
             <th>Nombre</th>

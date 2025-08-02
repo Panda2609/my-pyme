@@ -111,9 +111,9 @@ const Dashboard = ({ dashboardData }) => {
           {renderModalContent()}
         </Modal>
         <div className="dashboard-container">
-          <div className='dashboard-header'>
+          <div className='section-header'>
             <h2>Dashboard</h2>
-          </div>
+        </div>
           <div className="dashboard-graficos-kpi-layout">
             {/* KPIs a la izquierda */}
             <div className="dashboard-kpi-card">

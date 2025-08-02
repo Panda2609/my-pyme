@@ -2,20 +2,11 @@
 .product-list-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--gap-between-elements);
   /* padding: 2rem; */
   background: #f7f9fb;
   /* min-height: 100vh; */
   height: 100vh;
-}
-
-.product-list-header{
-  display: flex;
-  padding: 1rem;
-  background: var(--color-bg-light);
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius);
 }
 
 /* Estilos para la barra de búsqueda y filtros */
@@ -25,47 +16,6 @@
   justify-content: center;
   margin: 0 0 0 0;
 }
-
-/* Estilos para la tabla */
-.product-list-container table {
-  width: 100%;
-  border-collapse: collapse;
-  border: none;
-  max-width: 100%;
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: var(--box-shadow);
-  /* min-height: 100vh; */
-  /* height: 100vh; */
-}
-
-.product-list-container th,
-.product-list-container td {
-  border: none;
-  padding: 12px;
-  text-align: center;
-}
-
-.product-list-container tr{
-  background-color: var(--color-bg-light);
-  
-}
-
-.product-list-container th {
-  background-color: var( --color-bg-main);
-  font-weight: bold;
-  /* border-radius: var(--border-radius); */
-  color: var(--color-bg-light);
-}
-
-.product-list-container tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.product-list-container tbody tr:hover {
-  background-color: #e9e9e9;
-}
-
-/* Estilos para las celdas de acciones 
 
 /* Estilos para los iconos de acción */
 .product-list-container .action-icons {
