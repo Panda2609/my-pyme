@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 import { ITEMS_PER_PAGE } from "../configs";  
 import Pagination from "./Pagination";
 import '../styles/Client.css';
-import { FaPlus, FaFileUpload } from 'react-icons/fa';
+import { FaPlus, FaFileUpload, FaEye, FaEdit, FaTrash, FaHistory} from 'react-icons/fa';
 
 const Client = () => {
 
@@ -80,9 +80,22 @@ const Client = () => {
                 <td>{client.nombre}</td>
                 <td>{client.contacto}</td>
                 <td>
-                  <button className="client-historial-btn" onClick={() => handleShowHistorial(client)}>
-                    Ver historial
-                  </button>
+                  <div className="action-icons">
+                    <div className="btn-action-container">
+                      <button className="history-btn" title="Ver historial">
+                        <FaHistory />
+                        Historial
+                      </button>
+                      <button className="edit-btn" title="Editar">
+                        <FaEdit />
+                        Editar
+                      </button>
+                      <button className="delete-btn" title="Eliminar" >
+                        <FaTrash />
+                        Eliminar
+                      </button>
+                    </div>
+                  </div>
                 </td>
               </tr>
             ))

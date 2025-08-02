@@ -44,15 +44,21 @@
   background: #4a5568;
 }
 
-.eye-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #4a5568;
-  font-size: 1em;
-  padding: 0.2em 0.5em;
-  transition: color 0.2s;
+.status-badge {
+  padding: 0.2em 0.7em;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95em;
+  font-weight: 500;
+  display: inline-block;
+  width: 60%;
 }
-.eye-btn:hover {
-  color: #2b6cb0;
+
+.status-badge.ingresado {
+  background: var(--color-success);
 }
+
+.status-badge.pendiente {
+  background: var(--color-important);
+}
+

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import ProductFilters from './ProductFilters';
-import { FaEdit, FaTrash, FaPlus, FaFileUpload} from 'react-icons/fa';
+import { FaEdit, FaTrash, FaPlus, FaFileUpload, FaEye} from 'react-icons/fa';
 import '../styles/ProductList.css'
 import { ITEMS_PER_PAGE } from "../configs";  
 
@@ -132,19 +132,18 @@ const ProductList = ({ products }) => {
                     </span>
                   </td>
                   <td>
-                    {/* Contenedor para los iconos de acción */}
-                    <div className="action-icons">
-                      {/* Iconos con comportamiento de botón */}
-                      <FaEdit
-                        onClick={() => handleEdit(p.id)}
-                        title="Editar" // Tooltip al pasar el mouse
-                        className="edit-icon" // Clase específica para el icono de editar
-                      />
-                      <FaTrash
-                        onClick={() => handleDelete(p.id)}
-                        title="Eliminar" // Tooltip al pasar el mouse
-                        className="delete-icon" // Clase específica para el icono de eliminar
-                      />
+                    <div className="btn-action-container">
+                      {/* <button className="history-btn" title="Ver historial">
+                        <FaEye />
+                      </button> */}
+                      <button className="edit-btn" title="Editar">
+                        <FaEdit />
+                        Editar
+                      </button>
+                      <button className="delete-btn" title="Eliminar" >
+                        <FaTrash />
+                        Eliminar
+                      </button>
                     </div>
                   </td>
                 </tr>

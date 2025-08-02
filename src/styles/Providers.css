@@ -1,24 +1,4 @@
 
-.add-provider-btn {
- padding: 0rem 2rem;
-  background-color: var(--color-primary);
-  color: #fff;
-  border: none;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  /* margin: 0 1em */
-}
-.add-provider-btn:hover {
-  background: #2563eb;
-}
-
 .providers-container {
   display: flex;
   flex-direction: column;
@@ -34,26 +14,7 @@
   color: #a0aec0;
   padding: 24px 0;
 }
-.providers-action-btn {
-  background: #f7fafc;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  padding: 6px 10px;
-  margin-right: 6px;
-  cursor: pointer;
-  transition: background 0.2s, border 0.2s;
-  font-size: 16px;
-  color: #4A5568;
-  display: inline-flex;
-  align-items: center;
-}
-.providers-action-btn:last-child {
-  margin-right: 0;
-}
-.providers-action-btn:hover {
-  background: #e2e8f0;
-  border-color: #a0aec0;
-}
+
 .modal-overlay {
   position: fixed;
   top: 0;

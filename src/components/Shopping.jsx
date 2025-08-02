@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 import ProductFilters from "./ProductFilters";
 import Pagination from "./Pagination";
 import { ITEMS_PER_PAGE } from "../configs";
-import { FaPlus, FaFileUpload } from 'react-icons/fa';
+import { FaPlus, FaFileUpload, FaEdit, FaTrash } from 'react-icons/fa';
 
 const Shopping = () => {
   const [search, setSearch] = useState("");
@@ -86,9 +86,9 @@ const Shopping = () => {
                 <th>Fecha</th>
                 <th>Proveedor</th>
                 <th>Factura</th>
-                <th>Productos</th>
                 <th>Total</th>
                 <th>Estado</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -102,17 +102,28 @@ const Shopping = () => {
                     <td>{compra.fecha}</td>
                     <td>{compra.proveedor}</td>
                     <td>{compra.factura}</td>
-                    <td>
-                      <button
-                        className="eye-btn"
-                        title="Ver productos"
-                        onClick={() => handleOpenModal(compra.productos, compra.factura)}
-                      >
-                        <FaEye />
-                      </button>
-                    </td>
                     <td>{compra.total}</td>
-                    <td>{compra.estado}</td>
+                    <td>
+                      <span className={`status-badge ${compra.estado.toLowerCase()}`}>
+                      {compra.estado}
+                    </span>
+                    </td>
+                    <td>
+                      <div className="btn-action-container">
+                        <button className="details-btn" title="Ver historial">
+                          <FaEye />
+                          Ver Detalle
+                        </button> 
+                        <button className="edit-btn" title="Editar">
+                          <FaEdit />
+                          Editar
+                        </button>
+                        <button className="delete-btn" title="Eliminar" >
+                          <FaTrash />
+                          Eliminar
+                        </button>
+                      </div>
+                    </td>
                   </tr>
                 ))
               )}

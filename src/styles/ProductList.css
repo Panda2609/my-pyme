@@ -9,47 +9,11 @@
   height: 100vh;
 }
 
-/* Estilos para los iconos de acción */
-.product-list-container .action-icons {
-  display: flex;
-  justify-content: center;
-  gap: 2em; /* Espacio entre iconos */
-}
-
-.product-list-container .action-icons svg {
-  cursor: pointer;
-  font-size: 1.3em; /* Tamaño del icono */
-  transition: color 0.2s ease-in-out;
-}
-
-.product-list-container .action-icons .delete-icon{
-  color: var(--color-danger);
-}
-
-.product-list-container .action-icons .edit-icon{
-  color: var(--color-important);
-}
-
 /* Estilo para el mensaje de "No hay productos" */
 .product-list-container .no-products {
   text-align: center;
   font-style: italic;
   color: #666;
-}
-
-.add-product-btn:hover {
-  background-color: #0056b3;
-}
-
-.icon-btn{
-  font-size: 1em;
-}
-
-.add-product-btn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem; /* Espacio entre el icono y el texto */
 }
 
 .status-badge {
