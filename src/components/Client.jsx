@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 import { ITEMS_PER_PAGE } from "../configs";  
 import Pagination from "./Pagination";
 import '../styles/Client.css';
+import { FaPlus, FaFileUpload } from 'react-icons/fa';
 
 const Client = () => {
 
@@ -42,10 +43,23 @@ const Client = () => {
     <div className="client-container">
       <div className="section-header">
         <h2>Clientes</h2>
-
       </div>
-      <div className="filter-search-row">
+      <div className="action-bar">
         <SearchBar value={search} onChange={setSearch} />
+        <button
+          className="btn"
+          onClick={() => console.log('Botón Agregar Producto presionado')}
+        >
+          <FaPlus className="icon-btn" />
+          Añadir Cliente
+        </button>
+        <button
+          className="btn"
+          onClick={() => console.log('Botón Agregar Producto presionado')}
+        >
+          <FaFileUpload className="icon-btn" />
+          Cargar Planilla
+        </button>
       </div>
       <table className="client-table">
         <thead>

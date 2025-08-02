@@ -5,7 +5,8 @@ import SearchBar from './SearchBar';
 import ProductFilters from './ProductFilters';
 import Pagination from './Pagination';
 import '../styles/Sales.css';
-import { ITEMS_PER_PAGE } from "../configs";  
+import { ITEMS_PER_PAGE } from "../configs";
+import { FaPlus, FaFileUpload } from 'react-icons/fa';
 
 const Sales = () => {
   const [search, setSearch] = useState("");
@@ -50,9 +51,23 @@ const Sales = () => {
       <div className='section-header'>
           <h2>Ventas</h2>
         </div>
-      <div className="filter-search-row">
+      <div className="action-bar">
         <SearchBar value={search} onChange={setSearch} />
         <ProductFilters filters={filters} onChange={setFilters} />
+        <button
+          className="btn"
+          onClick={() => console.log('Botón Agregar Producto presionado')}
+        >
+          <FaPlus className="icon-btn" />
+          Añadir Venta
+        </button>
+        <button
+          className="btn"
+          onClick={() => console.log('Botón Agregar Producto presionado')}
+        >
+          <FaFileUpload className="icon-btn" />
+          Cargar Planilla
+        </button>
       </div>
       <table className="sales-table">
         <thead>
