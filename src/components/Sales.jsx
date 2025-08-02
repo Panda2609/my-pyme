@@ -36,6 +36,7 @@ const Sales = () => {
     setShowModal(false);
     setSelectedVenta(null);
   };
+  
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,7 +54,7 @@ const Sales = () => {
         </div>
       <div className="action-bar">
         <SearchBar value={search} onChange={setSearch} />
-        <ProductFilters filters={filters} onChange={setFilters} />
+        <ProductFilters filters={filters} onChange={setFilters} showStatus={false} showDate={true} />
         <button
           className="btn"
           onClick={() => console.log('Botón Agregar Producto presionado')}
