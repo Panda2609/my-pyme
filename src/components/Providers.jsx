@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import mockProvidersData from '../data/mockProvidersData';
 import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
@@ -7,6 +6,7 @@ import Pagination from './Pagination';
 import '../styles/Providers.css';
 import { ITEMS_PER_PAGE } from "../configs";
 import {FaPlus, FaFileUpload} from 'react-icons/fa';
+import ProductFilters from './ProductFilters';
 
 const Providers = () => {
   const [showModal, setShowModal] = useState(false);
@@ -33,10 +33,16 @@ const Providers = () => {
     alert('Eliminar proveedor: ' + providerId);
   };
 
-  // Filtrar proveedores por búsqueda
-  const filteredProviders = mockProvidersData.filter((p) =>
-    p.nombre.toLowerCase().includes(search.toLowerCase())
-  );
+  // Filtros por fecha
+  const [filters, setFilters] = useState({ fromDate: '', toDate: '' });
+
+  // Filtrar proveedores por búsqueda y fechas
+  const filteredProviders = mockProvidersData.filter((p) => {
+    const matchSearch = p.nombre.toLowerCase().includes(search.toLowerCase());
+    const matchFrom = filters.fromDate ? new Date(p.fechaContratacion) >= new Date(filters.fromDate) : true;
+    const matchTo = filters.toDate ? new Date(p.fechaContratacion) <= new Date(filters.toDate) : true;
+    return matchSearch && matchFrom && matchTo;
+  });
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,6 +60,12 @@ const Providers = () => {
         </div>
       <div className="action-bar">
         <SearchBar value={search} onChange={setSearch} />
+        <ProductFilters
+          filters={filters}
+          onChange={setFilters}
+          showStatus={false}
+          showDate={true}
+        />
         <button
           className="btn"
           onClick={() => console.log('Botón Agregar Producto presionado')}

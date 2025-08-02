@@ -71,7 +71,11 @@ const ProductList = ({ products }) => {
         {/* Fila combinada para búsqueda, filtros y botón */}
         <div className="action-bar">
           <SearchBar value={search} onChange={setSearch} />
-          <ProductFilters filters={filters} onChange={setFilters} />
+          <ProductFilters 
+          filters={filters} 
+          onChange={setFilters}
+          statusOptions={['Disponible', 'Agotado', 'Venciendo']}
+          />
           <button
             className="btn"
             onClick={() => console.log('Botón Agregar Producto presionado')}

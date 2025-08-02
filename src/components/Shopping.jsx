@@ -36,7 +36,9 @@ const Shopping = () => {
     const matchSearch = search === "" || matchProveedor || matchFactura || matchProducto;
     const matchFrom = filters.fromDate ? new Date(compra.fecha) >= new Date(filters.fromDate) : true;
     const matchTo = filters.toDate ? new Date(compra.fecha) <= new Date(filters.toDate) : true;
-    return matchSearch && matchFrom && matchTo;
+    //Compara el estado de la compra
+    const matchStatus = filters.status ? compra.estado === filters.status : true;
+    return matchSearch && matchFrom && matchTo && matchStatus;
   });
 
   // Paginación
@@ -56,7 +58,12 @@ const Shopping = () => {
           </div>
         <div className="action-bar">
           <SearchBar value={search} onChange={setSearch} placeholder="Buscar por proveedor o factura..." />
-          <ProductFilters filters={filters} onChange={setFilters} hideStatus hideCategory hideStock hidePrice hideProvider />
+          <ProductFilters 
+          filters={filters} 
+          onChange={setFilters}
+          statusOptions={['Ingresado', 'Pendiente']}
+          />
+          
           <button
             className="btn"
             onClick={() => console.log('Botón Agregar Producto presionado')}
