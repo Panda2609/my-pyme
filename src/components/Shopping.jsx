@@ -112,7 +112,11 @@ const Shopping = () => {
                       </button>
                     </td>
                     <td>{compra.total}</td>
-                    <td>{compra.estado}</td>
+                    <td>
+                      <span className={`status-badge ${compra.estado.toLowerCase()}`}>
+                      {compra.estado}
+                    </span>
+                    </td>
                   </tr>
                 ))
               )}
