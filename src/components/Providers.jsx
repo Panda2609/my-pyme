@@ -5,7 +5,8 @@ import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import '../styles/Providers.css';
-import { ITEMS_PER_PAGE } from "../configs";  
+import { ITEMS_PER_PAGE } from "../configs";
+import {FaPlus, FaFileUpload} from 'react-icons/fa';
 
 const Providers = () => {
   const [showModal, setShowModal] = useState(false);
@@ -51,10 +52,21 @@ const Providers = () => {
       <div className='section-header'>
           <h2>Proveedores</h2>
         </div>
-      <div className="filter-search-row">
+      <div className="action-bar">
         <SearchBar value={search} onChange={setSearch} />
-        <button className="add-provider-btn" >
-          Añadir
+        <button
+          className="btn"
+          onClick={() => console.log('Botón Agregar Producto presionado')}
+        >
+          <FaPlus className="icon-btn" />
+          Añadir Proveedor
+        </button>
+        <button
+          className="btn"
+          onClick={() => console.log('Botón Agregar Producto presionado')}
+        >
+          <FaFileUpload className="icon-btn" />
+          Cargar Planilla
         </button>
       </div>
       <table>

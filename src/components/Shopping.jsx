@@ -6,7 +6,8 @@ import mockShoppingData from "../data/mockShoppingData";
 import SearchBar from "./SearchBar";
 import ProductFilters from "./ProductFilters";
 import Pagination from "./Pagination";
-import { ITEMS_PER_PAGE } from "../configs";  
+import { ITEMS_PER_PAGE } from "../configs";
+import { FaPlus, FaFileUpload } from 'react-icons/fa';
 
 const Shopping = () => {
   const [search, setSearch] = useState("");
@@ -53,9 +54,23 @@ const Shopping = () => {
         <div className='section-header'>
             <h2>Compras de productos</h2>
           </div>
-        <div className="filter-search-row">
+        <div className="action-bar">
           <SearchBar value={search} onChange={setSearch} placeholder="Buscar por proveedor o factura..." />
           <ProductFilters filters={filters} onChange={setFilters} hideStatus hideCategory hideStock hidePrice hideProvider />
+          <button
+            className="btn"
+            onClick={() => console.log('Botón Agregar Producto presionado')}
+          >
+            <FaPlus className="icon-btn" />
+            Añadir Compra
+          </button>
+          <button
+            className="btn"
+            onClick={() => console.log('Botón Agregar Producto presionado')}
+          >
+            <FaFileUpload className="icon-btn" />
+            Cargar Planilla
+          </button>
         </div>
         <div className="shopping-container">
           <table className="shopping-table">

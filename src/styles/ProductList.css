@@ -9,14 +9,6 @@
   height: 100vh;
 }
 
-/* Estilos para la barra de búsqueda y filtros */
-.filter-search-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 0 0 0;
-}
-
 /* Estilos para los iconos de acción */
 .product-list-container .action-icons {
   display: flex;
@@ -43,24 +35,6 @@
   text-align: center;
   font-style: italic;
   color: #666;
-}
-
-/* Estilos para el botón de agregar producto */
-.add-product-btn {
-  padding: 0rem 2rem;
-  background-color: var(--color-primary);
-  color: #fff;
-  border: none;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  /* margin: 0 1em */
 }
 
 .add-product-btn:hover {

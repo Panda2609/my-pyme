@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import ProductFilters from './ProductFilters';
-import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaPlus, FaFileUpload} from 'react-icons/fa';
 import '../styles/ProductList.css'
 import { ITEMS_PER_PAGE } from "../configs";  
 
@@ -69,15 +69,22 @@ const ProductList = ({ products }) => {
         </div>
         
         {/* Fila combinada para búsqueda, filtros y botón */}
-        <div className="filter-search-row">
+        <div className="action-bar">
           <SearchBar value={search} onChange={setSearch} />
           <ProductFilters filters={filters} onChange={setFilters} />
           <button
-            className="add-product-btn"
+            className="btn"
             onClick={() => console.log('Botón Agregar Producto presionado')}
           >
             <FaPlus className="icon-btn" />
-            Añadir
+            Añadir Producto
+          </button>
+          <button
+            className="btn"
+            onClick={() => console.log('Botón Agregar Producto presionado')}
+          >
+            <FaFileUpload className="icon-btn" />
+            Cargar Planilla
           </button>
         </div>
 
