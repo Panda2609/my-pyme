@@ -4,7 +4,7 @@
 .pagination-container {
   display: flex; /* Usar flexbox para alinear los elementos */
   justify-content: center; /* Centrar horizontalmente los elementos */
-  margin-top: 20px; /* Espacio superior */
+  /* margin-top: 20px; Espacio superior */
   gap: 5px; /* Espacio entre los botones/elementos de paginación */
 }
 

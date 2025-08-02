@@ -1,24 +1,13 @@
+.client-container{
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-between-elements);
+  /* padding: 2rem; */
+  background: #f7f9fb;
+  /* min-height: 100vh; */
+  height: 100vh;
+}
 
-.client-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.client-table th, .client-table td {
-  border-bottom: 1px solid #eee;
-  text-align: left;
-  padding: 8px;
-}
-.client-table th {
-  border-bottom: 1px solid #ccc;
-}
-.client-historial-btn {
-  padding: 4px 12px;
-  cursor: pointer;
-  background: #f7fafc;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  transition: background 0.2s;
-}
 .client-historial-btn:hover {
   background: #e2e8f0;
 }

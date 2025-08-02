@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import mockClientsData from "../data/mockClientsData";
 import SearchBar from "./SearchBar";
-// import ProductFilters from "./ProductFilters";
+import { ITEMS_PER_PAGE } from "../configs";  
 import Pagination from "./Pagination";
 import '../styles/Client.css';
 
@@ -31,7 +31,7 @@ const Client = () => {
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = ITEMS_PER_PAGE;
   const totalPages = Math.ceil(filteredClients.length / itemsPerPage);
   const paginatedClients = filteredClients.slice(
     (currentPage - 1) * itemsPerPage,
@@ -39,7 +39,7 @@ const Client = () => {
   );
 
   return (
-    <div className="client">
+    <div className="client-container">
       <div className="section-header">
         <h2>Clientes</h2>
 

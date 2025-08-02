@@ -5,6 +5,7 @@ import SearchBar from './SearchBar';
 import ProductFilters from './ProductFilters';
 import Pagination from './Pagination';
 import '../styles/Sales.css';
+import { ITEMS_PER_PAGE } from "../configs";  
 
 const Sales = () => {
   const [search, setSearch] = useState("");
@@ -37,7 +38,7 @@ const Sales = () => {
 
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = ITEMS_PER_PAGE;
   const totalPages = Math.ceil(filteredSales.length / itemsPerPage);
   const paginatedSales = filteredSales.slice(
     (currentPage - 1) * itemsPerPage,
@@ -73,7 +74,7 @@ const Sales = () => {
                 <td>{venta.fecha}</td>
                 <td>{venta.cliente}</td>
                 <td>
-                  <button className="sales-action-btn" title="Ver productos" onClick={() => handleShowProductos(venta)}>
+                  <button className="eye-btn" title="Ver productos" onClick={() => handleShowProductos(venta)}>
                     <FaEye />
                   </button>
                 </td>
