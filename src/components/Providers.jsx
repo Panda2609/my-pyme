@@ -1,3 +1,4 @@
+import WorkInProgressModal from './WorkInProgressModal';
 import React, { useState } from 'react';
 import mockProvidersData from '../data/mockProvidersData';
 import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
@@ -9,6 +10,9 @@ import {FaPlus, FaFileUpload} from 'react-icons/fa';
 import ProductFilters from './ProductFilters';
 
 const Providers = () => {
+
+  const [showWipModal, setShowWipModal] = useState(false);
+
   const [showModal, setShowModal] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [search, setSearch] = useState("");
@@ -75,11 +79,16 @@ const Providers = () => {
         </button>
         <button
           className="btn"
-          onClick={() => console.log('Botón Agregar Producto presionado')}
+          onClick={() => setShowWipModal(true)}
         >
           <FaFileUpload className="icon-btn" />
           Cargar Planilla
         </button>
+        <WorkInProgressModal
+          open={showWipModal}
+          onClose={() => setShowWipModal(false)}
+          message="La carga de planillas estará disponible próximamente."
+        />
       </div>
       <table>
         <thead>

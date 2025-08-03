@@ -1,14 +1,15 @@
-
-
 import React, { useState } from "react";
 import mockClientsData from "../data/mockClientsData";
 import SearchBar from "./SearchBar";
 import { ITEMS_PER_PAGE } from "../configs";  
 import Pagination from "./Pagination";
 import '../styles/Client.css';
-import { FaPlus, FaFileUpload, FaEye, FaEdit, FaTrash, FaHistory} from 'react-icons/fa';
+import { FaPlus, FaFileUpload, FaEdit, FaTrash, FaHistory} from 'react-icons/fa';
+import WorkInProgressModal from './WorkInProgressModal';
 
 const Client = () => {
+  
+  const [showWipModal, setShowWipModal] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
@@ -55,11 +56,16 @@ const Client = () => {
         </button>
         <button
           className="btn"
-          onClick={() => console.log('Botón Agregar Producto presionado')}
+          onClick={() => setShowWipModal(true)}
         >
           <FaFileUpload className="icon-btn" />
           Cargar Planilla
         </button>
+        <WorkInProgressModal
+          open={showWipModal}
+          onClose={() => setShowWipModal(false)}
+          message="La carga de planillas estará disponible próximamente."
+        />
       </div>
       <table className="client-table">
         <thead>

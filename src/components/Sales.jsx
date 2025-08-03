@@ -1,3 +1,4 @@
+import WorkInProgressModal from './WorkInProgressModal';
 import React, { useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 import mockSalesData from '../data/mockSalesData';
@@ -11,6 +12,8 @@ import { FaPlus, FaFileUpload, FaEdit, FaTrash} from 'react-icons/fa';
 const Sales = () => {
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState({ status: '', fromDate: '', toDate: '' });
+
+  const [showWipModal, setShowWipModal] = useState(false);
 
 
   // Filtrar ventas por nombre de cliente y rango de fecha
@@ -64,11 +67,16 @@ const Sales = () => {
         </button>
         <button
           className="btn"
-          onClick={() => console.log('Botón Agregar Producto presionado')}
+          onClick={() => setShowWipModal(true)}
         >
           <FaFileUpload className="icon-btn" />
           Cargar Planilla
         </button>
+        <WorkInProgressModal
+          open={showWipModal}
+          onClose={() => setShowWipModal(false)}
+          message="La carga de planillas estará disponible próximamente."
+        />
       </div>
       <table className="sales-table">
         <thead>
