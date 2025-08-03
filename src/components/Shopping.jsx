@@ -1,4 +1,4 @@
-
+import WorkInProgressModal from './WorkInProgressModal';
 import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import "../styles/Shopping.css";
@@ -12,6 +12,8 @@ import { FaPlus, FaFileUpload, FaEdit, FaTrash } from 'react-icons/fa';
 const Shopping = () => {
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState({ fromDate: "", toDate: "" });
+
+  const [showWipModal, setShowWipModal] = useState(false);
 
   // Modal para productos
   const [modalOpen, setModalOpen] = useState(false);
@@ -71,13 +73,18 @@ const Shopping = () => {
             <FaPlus className="icon-btn" />
             Añadir Compra
           </button>
-          <button
-            className="btn"
-            onClick={() => console.log('Botón Agregar Producto presionado')}
-          >
-            <FaFileUpload className="icon-btn" />
-            Cargar Planilla
-          </button>
+        <button
+          className="btn"
+          onClick={() => setShowWipModal(true)}
+        >
+          <FaFileUpload className="icon-btn" />
+          Cargar Planilla
+        </button>
+        <WorkInProgressModal
+          open={showWipModal}
+          onClose={() => setShowWipModal(false)}
+          message="La carga de planillas estará disponible próximamente."
+        />
         </div>
         <div className="shopping-container">
           <table className="shopping-table">

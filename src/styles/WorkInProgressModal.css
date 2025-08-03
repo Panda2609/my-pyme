@@ -1,0 +1,53 @@
+.wip-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.wip-modal-content {
+  background: #fff;
+  padding: 2.5em 2em 2em 2em;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.wip-modal-icon {
+  font-size: 4.5em;
+  color: #e49400;
+  padding: .3em;
+  border-radius: 50%;
+  border: 2px dotted #e49400; /* Borde punteado naranja */
+  background-color: transparent;
+}
+
+.wip-modal-btn  {
+  background-color: #3182CE !important;
+  color: #fff !important;
+  border-radius: var(--border-radius) !important;
+  font-size: 1em !important;      /* Aumenta el tamaño del texto */
+  padding: 0.8em 2em !important;    /* Aumenta el área clickeable */
+  cursor: pointer !important;
+  transition: background 0.2s !important;
+}
+
+.wip-modal-btn:hover {
+  background: #2B6CB0;
+}
+
+.wip-modal-title {
+  font-size: 1.4em ;
+  /* margin-bottom: 1em; */
+  /* color: #3182CE; */
+  font-weight: bold;
+  margin : 0;
+}

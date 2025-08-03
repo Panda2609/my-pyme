@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import ProductFilters from './ProductFilters';
-import { FaEdit, FaTrash, FaPlus, FaFileUpload, FaEye} from 'react-icons/fa';
+import { FaEdit, FaTrash, FaPlus, FaFileUpload} from 'react-icons/fa';
 import '../styles/ProductList.css'
 import { ITEMS_PER_PAGE } from "../configs";  
-
+import WorkInProgressModal from './WorkInProgressModal';
 
 
 const ProductList = ({ products }) => {
@@ -19,6 +19,8 @@ const ProductList = ({ products }) => {
   toDate: '',
   // mas filtros...
   });
+
+  const [showWipModal, setShowWipModal] = useState(false);
 
   // Estados de búsqueda y paginación
   const [search, setSearch] = useState('');
@@ -85,11 +87,16 @@ const ProductList = ({ products }) => {
           </button>
           <button
             className="btn"
-            onClick={() => console.log('Botón Agregar Producto presionado')}
+            onClick={() => setShowWipModal(true)}
           >
             <FaFileUpload className="icon-btn" />
             Cargar Planilla
           </button>
+      <WorkInProgressModal
+        open={showWipModal}
+        onClose={() => setShowWipModal(false)}
+        message="La carga de planillas estará disponible próximamente."
+      />
         </div>
 
         {/* Tabla de productos */}
