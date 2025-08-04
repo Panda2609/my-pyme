@@ -1,4 +1,5 @@
 import WorkInProgressModal from './WorkInProgressModal';
+import ConfirmDeleteModal from './ConfirmDeleteModal';
 import React, { useState } from 'react';
 import mockProvidersData from '../data/mockProvidersData';
 import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
@@ -32,9 +33,19 @@ const Providers = () => {
     alert('Editar proveedor: ' + providerId);
   };
 
-  const handleDelete = (providerId) => {
-    // Lógica para eliminar proveedor
-    alert('Eliminar proveedor: ' + providerId);
+  const [deleteModal, setDeleteModal] = useState({ open: false, providerId: null });
+
+  const handleDeleteClick = (providerId) => {
+    setDeleteModal({ open: true, providerId });
+  };
+
+  const handleConfirmDelete = () => {
+    // Aquí iría la lógica real para eliminar el proveedor
+    setDeleteModal({ open: false, providerId: null });
+  };
+
+  const handleCancelDelete = () => {
+    setDeleteModal({ open: false, providerId: null });
   };
 
   // Filtros por fecha
@@ -126,7 +137,7 @@ const Providers = () => {
                       <FaEdit />
                       Editar
                     </button>
-                    <button className="delete-btn" title="Eliminar" >
+                    <button className="delete-btn" title="Eliminar" onClick={() => handleDeleteClick(provider.id)}>
                       <FaTrash />
                       Eliminar
                     </button>
@@ -164,6 +175,12 @@ const Providers = () => {
           </div>
         </div>
       )}
+      <ConfirmDeleteModal
+        isOpen={deleteModal.open}
+        message="¿Estás seguro de que deseas eliminar este proveedor?"
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import WorkInProgressModal from './WorkInProgressModal';
+import ConfirmDeleteModal from './ConfirmDeleteModal';
 import React, { useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 import mockSalesData from '../data/mockSalesData';
@@ -26,7 +27,20 @@ const Sales = () => {
       filters.toDate ? new Date(v.fecha) <= new Date(filters.toDate) : true
     );
 
+  const [deleteModal, setDeleteModal] = useState({ open: false, saleId: null });
   // Modal para productos
+  const handleDeleteClick = (saleId) => {
+    setDeleteModal({ open: true, saleId });
+  };
+
+  const handleConfirmDelete = () => {
+    // Aquí iría la lógica real para eliminar la venta
+    setDeleteModal({ open: false, saleId: null });
+  };
+
+  const handleCancelDelete = () => {
+    setDeleteModal({ open: false, saleId: null });
+  };
   const [showModal, setShowModal] = useState(false);
   const [selectedVenta, setSelectedVenta] = useState(null);
 
@@ -108,7 +122,7 @@ const Sales = () => {
                       <FaEdit />
                       Editar
                     </button>
-                    <button className="delete-btn" title="Eliminar" >
+                    <button className="delete-btn" title="Eliminar" onClick={() => handleDeleteClick(venta.id)}>
                       <FaTrash />
                       Eliminar
                     </button>
@@ -142,6 +156,12 @@ const Sales = () => {
           </div>
         </div>
       )}
+      <ConfirmDeleteModal
+        isOpen={deleteModal.open}
+        message="¿Estás seguro de que deseas eliminar esta venta?"
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
     </div>
   );
 };

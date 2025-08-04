@@ -5,7 +5,9 @@ import ProductFilters from './ProductFilters';
 import { FaEdit, FaTrash, FaPlus, FaFileUpload} from 'react-icons/fa';
 import '../styles/ProductList.css'
 import { ITEMS_PER_PAGE } from "../configs";  
+
 import WorkInProgressModal from './WorkInProgressModal';
+import ConfirmDeleteModal from './ConfirmDeleteModal';
 
 
 const ProductList = ({ products }) => {
@@ -42,15 +44,27 @@ const ProductList = ({ products }) => {
     filters.toDate ? new Date(p.date) <= new Date(filters.toDate) : true
   );
 
-  // Funciones placeholder para las acciones
+
+  // Estado para el modal de confirmación de borrado
+  const [deleteModal, setDeleteModal] = useState({ open: false, productId: null });
+
   const handleEdit = (productId) => {
     console.log('Editar producto:', productId);
     // Aquí iría la lógica para editar
   };
 
-  const handleDelete = (productId) => {
-    console.log('Eliminar producto:', productId);
-    // Aquí iría la lógica para eliminar
+  const handleDeleteClick = (productId) => {
+    setDeleteModal({ open: true, productId });
+  };
+
+  const handleConfirmDelete = () => {
+    console.log('Eliminar producto:', deleteModal.productId);
+    // Aquí iría la lógica real para eliminar el producto
+    setDeleteModal({ open: false, productId: null });
+  };
+
+  const handleCancelDelete = () => {
+    setDeleteModal({ open: false, productId: null });
   };
 
   // Paginación y calculo de total de páginas
@@ -143,11 +157,11 @@ const ProductList = ({ products }) => {
                       {/* <button className="history-btn" title="Ver historial">
                         <FaEye />
                       </button> */}
-                      <button className="edit-btn" title="Editar">
+                      <button className="edit-btn" title="Editar" onClick={() => handleEdit(p.id)}>
                         <FaEdit />
                         Editar
                       </button>
-                      <button className="delete-btn" title="Eliminar" >
+                      <button className="delete-btn" title="Eliminar" onClick={() => handleDeleteClick(p.id)}>
                         <FaTrash />
                         Eliminar
                       </button>
@@ -166,6 +180,12 @@ const ProductList = ({ products }) => {
           onPageChange={setCurrentPage}
         />
       </div>
+      <ConfirmDeleteModal
+        isOpen={deleteModal.open}
+        message="¿Estás seguro de que deseas eliminar este producto?"
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
     </>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ConfirmDeleteModal from './ConfirmDeleteModal';
 import mockClientsData from "../data/mockClientsData";
 import SearchBar from "./SearchBar";
 import { ITEMS_PER_PAGE } from "../configs";  
@@ -14,6 +15,19 @@ const Client = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
   const [search, setSearch] = useState("");
+  const [deleteModal, setDeleteModal] = useState({ open: false, clientId: null });
+  const handleDeleteClick = (clientId) => {
+    setDeleteModal({ open: true, clientId });
+  };
+
+  const handleConfirmDelete = () => {
+    // Aquí iría la lógica real para eliminar el cliente
+    setDeleteModal({ open: false, clientId: null });
+  };
+
+  const handleCancelDelete = () => {
+    setDeleteModal({ open: false, clientId: null });
+  };
 
 
   const handleShowHistorial = (client) => {
@@ -96,7 +110,7 @@ const Client = () => {
                         <FaEdit />
                         Editar
                       </button>
-                      <button className="delete-btn" title="Eliminar" >
+                      <button className="delete-btn" title="Eliminar" onClick={() => handleDeleteClick(client.id)}>
                         <FaTrash />
                         Eliminar
                       </button>
@@ -131,6 +145,12 @@ const Client = () => {
           </div>
         </div>
       )}
+      <ConfirmDeleteModal
+        isOpen={deleteModal.open}
+        message="¿Estás seguro de que deseas eliminar este cliente?"
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
     </div>
   );
 };

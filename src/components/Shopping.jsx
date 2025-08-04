@@ -8,6 +8,7 @@ import ProductFilters from "./ProductFilters";
 import Pagination from "./Pagination";
 import { ITEMS_PER_PAGE } from "../configs";
 import { FaPlus, FaFileUpload, FaEdit, FaTrash } from 'react-icons/fa';
+import ConfirmDeleteModal from './ConfirmDeleteModal';
 
 const Shopping = () => {
   const [search, setSearch] = useState("");
@@ -19,6 +20,7 @@ const Shopping = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalProductos, setModalProductos] = useState([]);
   const [modalFactura, setModalFactura] = useState("");
+  const [deleteModal, setDeleteModal] = useState({ open: false, shoppingId: null });
 
   const handleOpenModal = (productos, factura) => {
     setModalProductos(productos);
@@ -125,7 +127,7 @@ const Shopping = () => {
                           <FaEdit />
                           Editar
                         </button>
-                        <button className="delete-btn" title="Eliminar" >
+                        <button className="delete-btn" title="Eliminar" onClick={() => handleDeleteClick(compra.id)}>
                           <FaTrash />
                           Eliminar
                         </button>
@@ -157,8 +159,27 @@ const Shopping = () => {
           )}
         </div>
       </div>
+      <ConfirmDeleteModal
+        isOpen={deleteModal.open}
+        message="¿Estás seguro de que deseas eliminar esta compra?"
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
     </>
   );
+  // Funciones para el modal de confirmación
+  function handleDeleteClick(id) {
+    setDeleteModal({ open: true, shoppingId: id });
+  }
+
+  function handleConfirmDelete() {
+    // Aquí iría la lógica real para eliminar la compra
+    setDeleteModal({ open: false, shoppingId: null });
+  }
+
+  function handleCancelDelete() {
+    setDeleteModal({ open: false, shoppingId: null });
+  }
 };
 
 export default Shopping;
