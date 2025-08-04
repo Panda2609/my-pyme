@@ -17,6 +17,13 @@ const Client = () => {
   const [selectedClient, setSelectedClient] = useState(null);
   const [search, setSearch] = useState("");
   const [editModal, setEditModal] = useState({ open: false, client: null });
+  const [addModal, setAddModal] = useState(false);
+  const handleAdd = () => setAddModal(true);
+  const handleSaveAdd = (newClient) => {
+    // Aquí iría la lógica para agregar el cliente
+    setAddModal(false);
+  };
+  const handleCancelAdd = () => setAddModal(false);
   const handleEdit = (clientId) => {
     const client = mockClientsData.find(c => c.id === clientId);
     setEditModal({ open: true, client });
@@ -78,7 +85,7 @@ const Client = () => {
         <SearchBar value={search} onChange={setSearch} />
         <button
           className="btn"
-          onClick={() => console.log('Botón Agregar Producto presionado')}
+          onClick={handleAdd}
         >
           <FaPlus className="icon-btn" />
           Añadir Cliente
@@ -160,6 +167,17 @@ const Client = () => {
           </div>
         </div>
       )}
+      <EditItemModal
+        isOpen={addModal}
+        item={{}}
+        title="Añadir cliente"
+        fields={[
+          { name: 'nombre', label: 'Nombre', required: true },
+          { name: 'contacto', label: 'Contacto', required: true },
+        ]}
+        onSave={handleSaveAdd}
+        onCancel={handleCancelAdd}
+      />
       <EditItemModal
         isOpen={editModal.open}
         item={editModal.client}

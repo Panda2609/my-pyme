@@ -23,6 +23,13 @@ const Shopping = () => {
   const [modalFactura, setModalFactura] = useState("");
   const [deleteModal, setDeleteModal] = useState({ open: false, shoppingId: null });
   const [editModal, setEditModal] = useState({ open: false, shopping: null });
+  const [addModal, setAddModal] = useState(false);
+  const handleAdd = () => setAddModal(true);
+  const handleSaveAdd = (newShopping) => {
+    // Aquí iría la lógica para agregar la compra
+    setAddModal(false);
+  };
+  const handleCancelAdd = () => setAddModal(false);
   const handleEdit = (shoppingId) => {
     const shopping = mockShoppingData.find(s => s.id === shoppingId);
     setEditModal({ open: true, shopping });
@@ -82,10 +89,9 @@ const Shopping = () => {
           onChange={setFilters}
           statusOptions={['Ingresado', 'Pendiente']}
           />
-          
           <button
             className="btn"
-            onClick={() => console.log('Botón Agregar Producto presionado')}
+            onClick={handleAdd}
           >
             <FaPlus className="icon-btn" />
             Añadir Compra
@@ -107,9 +113,9 @@ const Shopping = () => {
           <table className="shopping-table">
             <thead>
               <tr>
-                <th>Fecha</th>
                 <th>Proveedor</th>
                 <th>Factura</th>
+                <th>Fecha</th>
                 <th>Total</th>
                 <th>Estado</th>
                 <th>Acciones</th>
@@ -123,9 +129,9 @@ const Shopping = () => {
               ) : (
                 paginated.map((compra) => (
                   <tr key={compra.id}>
-                    <td>{compra.fecha}</td>
                     <td>{compra.proveedor}</td>
                     <td>{compra.factura}</td>
+                    <td>{compra.fecha}</td>
                     <td>{compra.total}</td>
                     <td>
                       <span className={`status-badge ${compra.estado.toLowerCase()}`}>
@@ -174,14 +180,30 @@ const Shopping = () => {
           )}
         </div>
       </div>
+      {/* Modal de edición vacío para añadir productos */}
+      <EditItemModal
+        isOpen={addModal}
+        item={{}}
+        title="Añadir compra"
+        fields={[
+          { name: 'proveedor', label: 'Proveedor', required: true },
+          { name: 'factura', label: 'Factura', required: true },
+          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
+          { name: 'total', label: 'Total', type: 'number', required: true },
+          { name: 'estado', label: 'Estado', required: true },
+        ]}
+        onSave={handleSaveAdd}
+        onCancel={handleCancelAdd}
+      />
+      {/* Modal de edición para editar productos */}
       <EditItemModal
         isOpen={editModal.open}
         item={editModal.shopping}
         title="Editar compra"
         fields={[
-          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
           { name: 'proveedor', label: 'Proveedor', required: true },
           { name: 'factura', label: 'Factura', required: true },
+          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
           { name: 'total', label: 'Total', type: 'number', required: true },
           { name: 'estado', label: 'Estado', required: true },
         ]}

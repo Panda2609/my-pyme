@@ -19,6 +19,13 @@ const Providers = () => {
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [search, setSearch] = useState("");
   const [editModal, setEditModal] = useState({ open: false, provider: null });
+  const [addModal, setAddModal] = useState(false);
+  const handleAdd = () => setAddModal(true);
+  const handleSaveAdd = (newProvider) => {
+    // Aquí iría la lógica para agregar el proveedor
+    setAddModal(false);
+  };
+  const handleCancelAdd = () => setAddModal(false);
 
   const handleShowHistorial = (provider) => {
     setSelectedProvider(provider);
@@ -94,7 +101,7 @@ const Providers = () => {
         />
         <button
           className="btn"
-          onClick={() => console.log('Botón Agregar Producto presionado')}
+          onClick={handleAdd}
         >
           <FaPlus className="icon-btn" />
           Añadir Proveedor
@@ -186,6 +193,20 @@ const Providers = () => {
           </div>
         </div>
       )}
+      <EditItemModal
+        isOpen={addModal}
+        item={{}}
+        title="Añadir proveedor"
+        fields={[
+          { name: 'nombre', label: 'Nombre', required: true },
+          { name: 'email', label: 'Email', required: true },
+          { name: 'telefono', label: 'Teléfono', required: true },
+          { name: 'direccion', label: 'Dirección', required: true },
+          { name: 'fechaContratacion', label: 'Fecha de contratación', type: 'date', required: true },
+        ]}
+        onSave={handleSaveAdd}
+        onCancel={handleCancelAdd}
+      />
       <EditItemModal
         isOpen={editModal.open}
         item={editModal.provider}

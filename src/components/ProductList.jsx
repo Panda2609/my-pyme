@@ -25,6 +25,13 @@ const ProductList = ({ products }) => {
 
   const [showWipModal, setShowWipModal] = useState(false);
   const [editModal, setEditModal] = useState({ open: false, product: null });
+  const [addModal, setAddModal] = useState(false);
+  const handleAdd = () => setAddModal(true);
+  const handleSaveAdd = (newProduct) => {
+    // Aquí iría la lógica para agregar el producto
+    setAddModal(false);
+  };
+  const handleCancelAdd = () => setAddModal(false);
 
   // Estados de búsqueda y paginación
   const [search, setSearch] = useState('');
@@ -105,7 +112,7 @@ const ProductList = ({ products }) => {
           />
           <button
             className="btn"
-            onClick={() => console.log('Botón Agregar Producto presionado')}
+            onClick={handleAdd}
           >
             <FaPlus className="icon-btn" />
             Añadir Producto
@@ -191,6 +198,25 @@ const ProductList = ({ products }) => {
           onPageChange={setCurrentPage}
         />
       </div>
+      {/* Modal de edición vacío para añadir productos */}
+      <EditItemModal
+        isOpen={addModal}
+        item={{}}
+        title="Añadir producto"
+        fields={[
+          { name: 'name', label: 'Nombre', required: true },
+          { name: 'codigo', label: 'Código', required: true },
+          { name: 'cantidad', label: 'Stock actual', type: 'number', required: true },
+          { name: 'categoria', label: 'Categoría', required: true },
+          { name: 'precio', label: 'Precio', type: 'number', required: true },
+          { name: 'proveedor', label: 'Proveedor', required: true },
+          { name: 'date', label: 'Fecha', type: 'date', required: true },
+          { name: 'status', label: 'Estado', required: true },
+        ]}
+        onSave={handleSaveAdd}
+        onCancel={handleCancelAdd}
+      />
+      {/* Modal de edición para editar productos */}
       <EditItemModal
         isOpen={editModal.open}
         item={editModal.product}

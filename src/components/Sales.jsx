@@ -14,6 +14,13 @@ import { FaPlus, FaFileUpload, FaEdit, FaTrash} from 'react-icons/fa';
 const Sales = () => {
   const [search, setSearch] = useState("");
   const [editModal, setEditModal] = useState({ open: false, sale: null });
+  const [addModal, setAddModal] = useState(false);
+  const handleAdd = () => setAddModal(true);
+  const handleSaveAdd = (newSale) => {
+    // Aquí iría la lógica para agregar la venta
+    setAddModal(false);
+  };
+  const handleCancelAdd = () => setAddModal(false);
   const handleEdit = (saleId) => {
     const sale = mockSalesData.find(s => s.id === saleId);
     setEditModal({ open: true, sale });
@@ -89,7 +96,7 @@ const Sales = () => {
         <ProductFilters filters={filters} onChange={setFilters} showStatus={false} showDate={true} />
         <button
           className="btn"
-          onClick={() => console.log('Botón Agregar Producto presionado')}
+          onClick={handleAdd}
         >
           <FaPlus className="icon-btn" />
           Añadir Venta
@@ -110,8 +117,8 @@ const Sales = () => {
       <table className="sales-table">
         <thead>
           <tr>
-            <th>Fecha</th>
             <th>Cliente</th>
+            <th>Fecha</th>
             <th>Total</th>
             <th>Acciones</th>
           </tr>
@@ -124,8 +131,8 @@ const Sales = () => {
           ) : (
             paginatedSales.map((venta) => (
               <tr key={venta.id}>
-                <td>{venta.fecha}</td>
                 <td>{venta.cliente}</td>
+                <td>{venta.fecha}</td>
                 <td>${venta.total.toLocaleString('es-CL')}</td>
                 <td>
                   <div className="btn-action-container">
@@ -172,12 +179,24 @@ const Sales = () => {
         </div>
       )}
       <EditItemModal
+        isOpen={addModal}
+        item={{}}
+        title="Añadir venta"
+        fields={[
+          { name: 'cliente', label: 'Cliente', required: true },
+          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
+          { name: 'total', label: 'Total', type: 'number', required: true },
+        ]}
+        onSave={handleSaveAdd}
+        onCancel={handleCancelAdd}
+      />
+      <EditItemModal
         isOpen={editModal.open}
         item={editModal.sale}
         title="Editar venta"
         fields={[
-          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
           { name: 'cliente', label: 'Cliente', required: true },
+          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
           { name: 'total', label: 'Total', type: 'number', required: true },
         ]}
         onSave={handleSaveEdit}
