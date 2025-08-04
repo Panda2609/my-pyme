@@ -1,4 +1,5 @@
 import WorkInProgressModal from './WorkInProgressModal';
+import EditItemModal from './EditItemModal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import React, { useState } from 'react';
 import { FaEye } from 'react-icons/fa';
@@ -12,6 +13,20 @@ import { FaPlus, FaFileUpload, FaEdit, FaTrash} from 'react-icons/fa';
 
 const Sales = () => {
   const [search, setSearch] = useState("");
+  const [editModal, setEditModal] = useState({ open: false, sale: null });
+  const handleEdit = (saleId) => {
+    const sale = mockSalesData.find(s => s.id === saleId);
+    setEditModal({ open: true, sale });
+  };
+
+  const handleSaveEdit = (updatedSale) => {
+    // Aquí iría la lógica para guardar la venta editada
+    setEditModal({ open: false, sale: null });
+  };
+
+  const handleCancelEdit = () => {
+    setEditModal({ open: false, sale: null });
+  };
   const [filters, setFilters] = useState({ status: '', fromDate: '', toDate: '' });
 
   const [showWipModal, setShowWipModal] = useState(false);
@@ -118,7 +133,7 @@ const Sales = () => {
                       <FaEye/>
                       Ver Detalle
                     </button>
-                    <button className="edit-btn" title="Editar">
+                    <button className="edit-btn" title="Editar" onClick={() => handleEdit(venta.id)}>
                       <FaEdit />
                       Editar
                     </button>
@@ -156,6 +171,18 @@ const Sales = () => {
           </div>
         </div>
       )}
+      <EditItemModal
+        isOpen={editModal.open}
+        item={editModal.sale}
+        title="Editar venta"
+        fields={[
+          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
+          { name: 'cliente', label: 'Cliente', required: true },
+          { name: 'total', label: 'Total', type: 'number', required: true },
+        ]}
+        onSave={handleSaveEdit}
+        onCancel={handleCancelEdit}
+      />
       <ConfirmDeleteModal
         isOpen={deleteModal.open}
         message="¿Estás seguro de que deseas eliminar esta venta?"

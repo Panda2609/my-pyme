@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import EditItemModal from './EditItemModal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import mockClientsData from "../data/mockClientsData";
 import SearchBar from "./SearchBar";
@@ -15,6 +16,20 @@ const Client = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
   const [search, setSearch] = useState("");
+  const [editModal, setEditModal] = useState({ open: false, client: null });
+  const handleEdit = (clientId) => {
+    const client = mockClientsData.find(c => c.id === clientId);
+    setEditModal({ open: true, client });
+  };
+
+  const handleSaveEdit = (updatedClient) => {
+    // Aquí iría la lógica para guardar el cliente editado
+    setEditModal({ open: false, client: null });
+  };
+
+  const handleCancelEdit = () => {
+    setEditModal({ open: false, client: null });
+  };
   const [deleteModal, setDeleteModal] = useState({ open: false, clientId: null });
   const handleDeleteClick = (clientId) => {
     setDeleteModal({ open: true, clientId });
@@ -106,7 +121,7 @@ const Client = () => {
                         <FaHistory />
                         Historial
                       </button>
-                      <button className="edit-btn" title="Editar">
+                      <button className="edit-btn" title="Editar" onClick={() => handleEdit(client.id)}>
                         <FaEdit />
                         Editar
                       </button>
@@ -145,6 +160,17 @@ const Client = () => {
           </div>
         </div>
       )}
+      <EditItemModal
+        isOpen={editModal.open}
+        item={editModal.client}
+        title="Editar cliente"
+        fields={[
+          { name: 'nombre', label: 'Nombre', required: true },
+          { name: 'contacto', label: 'Contacto', required: true },
+        ]}
+        onSave={handleSaveEdit}
+        onCancel={handleCancelEdit}
+      />
       <ConfirmDeleteModal
         isOpen={deleteModal.open}
         message="¿Estás seguro de que deseas eliminar este cliente?"

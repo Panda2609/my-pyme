@@ -1,4 +1,5 @@
 import WorkInProgressModal from './WorkInProgressModal';
+import EditItemModal from './EditItemModal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import React, { useState } from 'react';
 import mockProvidersData from '../data/mockProvidersData';
@@ -17,6 +18,7 @@ const Providers = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [search, setSearch] = useState("");
+  const [editModal, setEditModal] = useState({ open: false, provider: null });
 
   const handleShowHistorial = (provider) => {
     setSelectedProvider(provider);
@@ -29,8 +31,17 @@ const Providers = () => {
   };
 
   const handleEdit = (providerId) => {
-    // Lógica para editar proveedor
-    alert('Editar proveedor: ' + providerId);
+    const provider = mockProvidersData.find(p => p.id === providerId);
+    setEditModal({ open: true, provider });
+  };
+
+  const handleSaveEdit = (updatedProvider) => {
+    // Aquí iría la lógica para guardar el proveedor editado
+    setEditModal({ open: false, provider: null });
+  };
+
+  const handleCancelEdit = () => {
+    setEditModal({ open: false, provider: null });
   };
 
   const [deleteModal, setDeleteModal] = useState({ open: false, providerId: null });
@@ -133,7 +144,7 @@ const Providers = () => {
                       <FaEye />
                       Ver detalle
                     </button>
-                    <button className="edit-btn" title="Editar">
+                    <button className="edit-btn" title="Editar" onClick={() => handleEdit(provider.id)}>
                       <FaEdit />
                       Editar
                     </button>
@@ -175,6 +186,20 @@ const Providers = () => {
           </div>
         </div>
       )}
+      <EditItemModal
+        isOpen={editModal.open}
+        item={editModal.provider}
+        title="Editar proveedor"
+        fields={[
+          { name: 'nombre', label: 'Nombre', required: true },
+          { name: 'email', label: 'Email', required: true },
+          { name: 'telefono', label: 'Teléfono', required: true },
+          { name: 'direccion', label: 'Dirección', required: true },
+          { name: 'fechaContratacion', label: 'Fecha de contratación', type: 'date', required: true },
+        ]}
+        onSave={handleSaveEdit}
+        onCancel={handleCancelEdit}
+      />
       <ConfirmDeleteModal
         isOpen={deleteModal.open}
         message="¿Estás seguro de que deseas eliminar este proveedor?"

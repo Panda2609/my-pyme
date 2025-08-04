@@ -9,6 +9,7 @@ import Pagination from "./Pagination";
 import { ITEMS_PER_PAGE } from "../configs";
 import { FaPlus, FaFileUpload, FaEdit, FaTrash } from 'react-icons/fa';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
+import EditItemModal from './EditItemModal';
 
 const Shopping = () => {
   const [search, setSearch] = useState("");
@@ -21,6 +22,20 @@ const Shopping = () => {
   const [modalProductos, setModalProductos] = useState([]);
   const [modalFactura, setModalFactura] = useState("");
   const [deleteModal, setDeleteModal] = useState({ open: false, shoppingId: null });
+  const [editModal, setEditModal] = useState({ open: false, shopping: null });
+  const handleEdit = (shoppingId) => {
+    const shopping = mockShoppingData.find(s => s.id === shoppingId);
+    setEditModal({ open: true, shopping });
+  };
+
+  const handleSaveEdit = (updatedShopping) => {
+    // Aquí iría la lógica para guardar la compra editada
+    setEditModal({ open: false, shopping: null });
+  };
+
+  const handleCancelEdit = () => {
+    setEditModal({ open: false, shopping: null });
+  };
 
   const handleOpenModal = (productos, factura) => {
     setModalProductos(productos);
@@ -123,7 +138,7 @@ const Shopping = () => {
                           <FaEye />
                           Ver Detalle
                         </button> 
-                        <button className="edit-btn" title="Editar">
+                        <button className="edit-btn" title="Editar" onClick={() => handleEdit(compra.id)}>
                           <FaEdit />
                           Editar
                         </button>
@@ -159,6 +174,20 @@ const Shopping = () => {
           )}
         </div>
       </div>
+      <EditItemModal
+        isOpen={editModal.open}
+        item={editModal.shopping}
+        title="Editar compra"
+        fields={[
+          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
+          { name: 'proveedor', label: 'Proveedor', required: true },
+          { name: 'factura', label: 'Factura', required: true },
+          { name: 'total', label: 'Total', type: 'number', required: true },
+          { name: 'estado', label: 'Estado', required: true },
+        ]}
+        onSave={handleSaveEdit}
+        onCancel={handleCancelEdit}
+      />
       <ConfirmDeleteModal
         isOpen={deleteModal.open}
         message="¿Estás seguro de que deseas eliminar esta compra?"

@@ -12,7 +12,7 @@ const mockShoppingData = [
       'Papel A4 x 10 (precio unitario: $1500)',
       'Lápiz Pasta x 20 (precio unitario: $500)'
     ],
-    total: '$25.000',
+    total: 25000,
     estado: 'Ingresado'
   },
   {
@@ -24,7 +24,7 @@ const mockShoppingData = [
       'Cuaderno Universitario x 15 (precio unitario: $1200)',
       'Tóner HP x 2 (precio unitario: $35000)'
     ],
-    total: '$61.000',
+    total: 61000,
     estado: 'Ingresado'
   },
   {
@@ -36,7 +36,7 @@ const mockShoppingData = [
       'Caja de Clips x 30 (precio unitario: $200)',
       'Resma de Papel x 5 (precio unitario: $3500)'
     ],
-    total: '$21.000',
+    total: 21000,
     estado: 'Pendiente'
   },
   {
@@ -48,7 +48,7 @@ const mockShoppingData = [
       'Carpeta Plástica x 12 (precio unitario: $800)',
       'Tijeras x 8 (precio unitario: $1200)'
     ],
-    total: '$16.000',
+    total: 16000,
     estado: 'Ingresado'
   },
   {
@@ -60,7 +60,7 @@ const mockShoppingData = [
       'Corrector x 10 (precio unitario: $700)',
       'Marcador Permanente x 6 (precio unitario: $900)'
     ],
-    total: '$10.400',
+    total: 10400,
     estado: 'Ingresado'
   },
   {
@@ -72,7 +72,7 @@ const mockShoppingData = [
       'Cinta Adhesiva x 15 (precio unitario: $600)',
       'Archivador x 4 (precio unitario: $2500)'
     ],
-    total: '$16.000',
+    total: 16000,
     estado: 'Pendiente'
   },
   {
@@ -84,7 +84,7 @@ const mockShoppingData = [
       'Calculadora x 2 (precio unitario: $8500)',
       'Goma de Borrar x 25 (precio unitario: $300)'
     ],
-    total: '$20.500',
+    total: 20500,
     estado: 'Ingresado'
   },
   {
@@ -96,7 +96,7 @@ const mockShoppingData = [
       'Regla 30cm x 10 (precio unitario: $700)',
       'Papel A4 x 5 (precio unitario: $1500)'
     ],
-    total: '$12.000',
+    total: 12000,
     estado: 'Ingresado'
   },
   {
@@ -108,7 +108,7 @@ const mockShoppingData = [
       'Lápiz Pasta x 30 (precio unitario: $500)',
       'Cuaderno Universitario x 10 (precio unitario: $1200)'
     ],
-    total: '$21.000',
+    total: 21000,
     estado: 'Pendiente'
   },
   {
@@ -120,7 +120,7 @@ const mockShoppingData = [
       'Tóner HP x 1 (precio unitario: $35000)',
       'Caja de Clips x 20 (precio unitario: $200)'
     ],
-    total: '$35.400',
+    total: 35400,
     estado: 'Ingresado'
   }
   ,
@@ -133,7 +133,7 @@ const mockShoppingData = [
       'Resma de Papel x 8 (precio unitario: $3200)',
       'Carpeta Plástica x 10 (precio unitario: $800)'
     ],
-    total: '$32.400',
+    total: 32400,
     estado: 'Ingresado'
   },
   {
@@ -145,7 +145,7 @@ const mockShoppingData = [
       'Tijeras x 12 (precio unitario: $1200)',
       'Corrector x 15 (precio unitario: $700)'
     ],
-    total: '$20.100',
+    total: 20100,
     estado: 'Pendiente'
   },
   {
@@ -157,7 +157,7 @@ const mockShoppingData = [
       'Marcador Permanente x 10 (precio unitario: $900)',
       'Cinta Adhesiva x 20 (precio unitario: $600)'
     ],
-    total: '$21.000',
+    total: 21000,
     estado: 'Ingresado'
   },
   {
@@ -169,7 +169,7 @@ const mockShoppingData = [
       'Archivador x 6 (precio unitario: $2500)',
       'Calculadora x 1 (precio unitario: $8500)'
     ],
-    total: '$23.500',
+    total: 23500,
     estado: 'Ingresado'
   },
   {
@@ -181,7 +181,7 @@ const mockShoppingData = [
       'Goma de Borrar x 30 (precio unitario: $300)',
       'Regla 30cm x 15 (precio unitario: $700)'
     ],
-    total: '$13.500',
+    total: 13500,
     estado: 'Pendiente'
   },
   {
@@ -193,7 +193,7 @@ const mockShoppingData = [
       'Papel A4 x 12 (precio unitario: $1500)',
       'Lápiz Pasta x 25 (precio unitario: $500)'
     ],
-    total: '$25.500',
+    total: 25500,
     estado: 'Ingresado'
   },
   {
@@ -205,7 +205,7 @@ const mockShoppingData = [
       'Cuaderno Universitario x 20 (precio unitario: $1200)',
       'Tóner HP x 3 (precio unitario: $35000)'
     ],
-    total: '$89.000',
+    total: 89000,
     estado: 'Ingresado'
   },
   {
@@ -217,7 +217,7 @@ const mockShoppingData = [
       'Caja de Clips x 40 (precio unitario: $200)',
       'Resma de Papel x 7 (precio unitario: $3500)'
     ],
-    total: '$28.800',
+    total: 28800,
     estado: 'Pendiente'
   },
   {
@@ -229,7 +229,7 @@ const mockShoppingData = [
       'Carpeta Plástica x 15 (precio unitario: $800)',
       'Tijeras x 10 (precio unitario: $1200)'
     ],
-    total: '$18.000',
+    total: 18000,
     estado: 'Ingresado'
   },
   {
@@ -241,7 +241,7 @@ const mockShoppingData = [
       'Corrector x 12 (precio unitario: $700)',
       'Marcador Permanente x 8 (precio unitario: $900)'
     ],
-    total: '$11.400',
+    total: 11400,
     estado: 'Ingresado'
   },
   {
@@ -253,7 +253,7 @@ const mockShoppingData = [
       'Cinta Adhesiva x 18 (precio unitario: $600)',
       'Archivador x 5 (precio unitario: $2500)'
     ],
-    total: '$17.300',
+    total: 17300,
     estado: 'Pendiente'
   },
   {
@@ -265,7 +265,7 @@ const mockShoppingData = [
       'Calculadora x 3 (precio unitario: $8500)',
       'Goma de Borrar x 20 (precio unitario: $300)'
     ],
-    total: '$26.500',
+    total: 26500,
     estado: 'Ingresado'
   },
   {
@@ -277,7 +277,7 @@ const mockShoppingData = [
       'Regla 30cm x 12 (precio unitario: $700)',
       'Papel A4 x 7 (precio unitario: $1500)'
     ],
-    total: '$14.900',
+    total: 14900,
     estado: 'Ingresado'
   },
   {
@@ -289,7 +289,7 @@ const mockShoppingData = [
       'Lápiz Pasta x 35 (precio unitario: $500)',
       'Cuaderno Universitario x 8 (precio unitario: $1200)'
     ],
-    total: '$19.600',
+    total: 19600,
     estado: 'Pendiente'
   },
   {
@@ -301,7 +301,7 @@ const mockShoppingData = [
       'Tóner HP x 2 (precio unitario: $35000)',
       'Caja de Clips x 25 (precio unitario: $200)'
     ],
-    total: '$70.500',
+    total: 70500,
     estado: 'Ingresado'
   },
   {
@@ -313,7 +313,7 @@ const mockShoppingData = [
       'Resma de Papel x 6 (precio unitario: $3500)',
       'Carpeta Plástica x 14 (precio unitario: $800)'
     ],
-    total: '$27.400',
+    total: 27400,
     estado: 'Ingresado'
   },
   {
@@ -325,7 +325,7 @@ const mockShoppingData = [
       'Tijeras x 9 (precio unitario: $1200)',
       'Corrector x 18 (precio unitario: $700)'
     ],
-    total: '$18.600',
+    total: 18600,
     estado: 'Pendiente'
   },
   {
@@ -337,7 +337,7 @@ const mockShoppingData = [
       'Marcador Permanente x 7 (precio unitario: $900)',
       'Cinta Adhesiva x 22 (precio unitario: $600)'
     ],
-    total: '$17.400',
+    total: 17400,
     estado: 'Ingresado'
   },
   {
@@ -349,7 +349,7 @@ const mockShoppingData = [
       'Archivador x 3 (precio unitario: $2500)',
       'Calculadora x 2 (precio unitario: $8500)'
     ],
-    total: '$22.000',
+    total: 22.000,
     estado: 'Ingresado'
   },
   {
@@ -361,7 +361,7 @@ const mockShoppingData = [
       'Goma de Borrar x 28 (precio unitario: $300)',
       'Regla 30cm x 18 (precio unitario: $700)'
     ],
-    total: '$17.400',
+    total: 17.400,
     estado: 'Pendiente'
   },
   {
@@ -373,7 +373,7 @@ const mockShoppingData = [
       'Papel A4 x 9 (precio unitario: $1500)',
       'Lápiz Pasta x 22 (precio unitario: $500)'
     ],
-    total: '$18.500',
+    total: 18500,
     estado: 'Ingresado'
   },
   {
@@ -385,7 +385,7 @@ const mockShoppingData = [
       'Cuaderno Universitario x 13 (precio unitario: $1200)',
       'Tóner HP x 1 (precio unitario: $35000)'
     ],
-    total: '$50.600',
+    total: 50600,
     estado: 'Ingresado'
   },
   {
@@ -397,7 +397,7 @@ const mockShoppingData = [
       'Caja de Clips x 32 (precio unitario: $200)',
       'Resma de Papel x 4 (precio unitario: $3500)'
     ],
-    total: '$16.400',
+    total: 16400,
     estado: 'Pendiente'
   }
 ];

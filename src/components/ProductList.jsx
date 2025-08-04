@@ -7,6 +7,7 @@ import '../styles/ProductList.css'
 import { ITEMS_PER_PAGE } from "../configs";  
 
 import WorkInProgressModal from './WorkInProgressModal';
+import EditItemModal from './EditItemModal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 
 
@@ -23,6 +24,7 @@ const ProductList = ({ products }) => {
   });
 
   const [showWipModal, setShowWipModal] = useState(false);
+  const [editModal, setEditModal] = useState({ open: false, product: null });
 
   // Estados de búsqueda y paginación
   const [search, setSearch] = useState('');
@@ -49,8 +51,17 @@ const ProductList = ({ products }) => {
   const [deleteModal, setDeleteModal] = useState({ open: false, productId: null });
 
   const handleEdit = (productId) => {
-    console.log('Editar producto:', productId);
-    // Aquí iría la lógica para editar
+    const product = allProducts.find(p => p.id === productId);
+    setEditModal({ open: true, product });
+  };
+
+  const handleSaveEdit = (updatedProduct) => {
+    // Aquí iría la lógica para guardar el producto editado
+    setEditModal({ open: false, product: null });
+  };
+
+  const handleCancelEdit = () => {
+    setEditModal({ open: false, product: null });
   };
 
   const handleDeleteClick = (productId) => {
@@ -180,6 +191,23 @@ const ProductList = ({ products }) => {
           onPageChange={setCurrentPage}
         />
       </div>
+      <EditItemModal
+        isOpen={editModal.open}
+        item={editModal.product}
+        title="Editar producto"
+        fields={[
+          { name: 'name', label: 'Nombre', required: true },
+          { name: 'codigo', label: 'Código', required: true },
+          { name: 'cantidad', label: 'Stock actual', type: 'number', required: true },
+          { name: 'categoria', label: 'Categoría', required: true },
+          { name: 'precio', label: 'Precio', type: 'number', required: true },
+          { name: 'proveedor', label: 'Proveedor', required: true },
+          { name: 'date', label: 'Fecha', type: 'date', required: true },
+          { name: 'status', label: 'Estado', required: true },
+        ]}
+        onSave={handleSaveEdit}
+        onCancel={handleCancelEdit}
+      />
       <ConfirmDeleteModal
         isOpen={deleteModal.open}
         message="¿Estás seguro de que deseas eliminar este producto?"
