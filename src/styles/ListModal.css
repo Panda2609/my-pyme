@@ -1,0 +1,82 @@
+/* Overlay para el modal */
+.modal-overlay-one{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Contenedor del modal (idéntico a EditItemModal) */
+.modal-content{
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  width: 30%;
+   min-width: 320px;
+  text-align: center;
+}
+
+
+/* Acciones del modal (pie de modal) */
+.modal-actions{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  height: 3rem;
+  margin-top: 1.2rem;
+}
+
+/* Botón cerrar (igual a btn-cancel de EditItemModal) */
+.btn-cancel {
+  background: #bdbdbd;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.btn-cancel:hover {
+  background: #757575;
+}
+
+/* Título del modal */
+.modal-content h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+/* Mensaje opcional */
+.modal-content p {
+  margin-bottom: 1.2rem;
+  color: #444;
+}
+
+/* Lista de productos o elementos */
+.list-modal-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+}
+.list-modal-items li {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1rem;
+  color: #333;
+}
+.list-modal-items li:last-child {
+  border-bottom: none;
+}

@@ -3,6 +3,7 @@ import EditItemModal from './EditItemModal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import React, { useState } from 'react';
 import { FaEye } from 'react-icons/fa';
+import ListModal from './ListModal';
 import mockSalesData from '../data/mockSalesData';
 import SearchBar from './SearchBar';
 import ProductFilters from './ProductFilters';
@@ -63,17 +64,20 @@ const Sales = () => {
   const handleCancelDelete = () => {
     setDeleteModal({ open: false, saleId: null });
   };
-  const [showModal, setShowModal] = useState(false);
-  const [selectedVenta, setSelectedVenta] = useState(null);
+  // Modal para productos vendidos
+  const [productsModal, setProductsModal] = useState({ open: false, items: [], title: '', message: '' });
 
   const handleShowProductos = (venta) => {
-    setSelectedVenta(venta);
-    setShowModal(true);
+    setProductsModal({
+      open: true,
+      items: venta.productos.map(prod => `${prod.nombre} x${prod.cantidad} ($${prod.precio.toLocaleString('es-CL')})`),
+      title: `Productos vendidos a ${venta.cliente}`,
+      message: venta.productos.length === 0 ? 'No hay productos en esta venta.' : ''
+    });
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedVenta(null);
+  const handleCloseProductosModal = () => {
+    setProductsModal({ open: false, items: [], title: '', message: '' });
   };
   
 
@@ -87,128 +91,122 @@ const Sales = () => {
   );
 
   return (
-    <div className="sales-container">
-      <div className='section-header'>
-          <h2>Ventas</h2>
+    <>
+      <div className="sales-container">
+        <div className='section-header'>
+            <h2>Ventas</h2>
+          </div>
+        <div className="action-bar">
+          <SearchBar value={search} onChange={setSearch} />
+          <ProductFilters filters={filters} onChange={setFilters} showStatus={false} showDate={true} />
+          <button
+            className="btn"
+            onClick={handleAdd}
+          >
+            <FaPlus className="icon-btn" />
+            Añadir Venta
+          </button>
+          <button
+            className="btn"
+            onClick={() => setShowWipModal(true)}
+          >
+            <FaFileUpload className="icon-btn" />
+            Cargar Planilla
+          </button>
+          <WorkInProgressModal
+            open={showWipModal}
+            onClose={() => setShowWipModal(false)}
+            message="La carga de planillas estará disponible próximamente."
+          />
         </div>
-      <div className="action-bar">
-        <SearchBar value={search} onChange={setSearch} />
-        <ProductFilters filters={filters} onChange={setFilters} showStatus={false} showDate={true} />
-        <button
-          className="btn"
-          onClick={handleAdd}
-        >
-          <FaPlus className="icon-btn" />
-          Añadir Venta
-        </button>
-        <button
-          className="btn"
-          onClick={() => setShowWipModal(true)}
-        >
-          <FaFileUpload className="icon-btn" />
-          Cargar Planilla
-        </button>
-        <WorkInProgressModal
-          open={showWipModal}
-          onClose={() => setShowWipModal(false)}
-          message="La carga de planillas estará disponible próximamente."
+        <table className="sales-table">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Fecha</th>
+              <th>Total</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paginatedSales.length === 0 ? (
+              <tr>
+                <td colSpan="4" className="no-sales">No hay ventas</td>
+              </tr>
+            ) : (
+              paginatedSales.map((venta) => (
+                <tr key={venta.id}>
+                  <td>{venta.cliente}</td>
+                  <td>{venta.fecha}</td>
+                  <td>${venta.total.toLocaleString('es-CL')}</td>
+                  <td>
+                    <div className="btn-action-container">
+                      <button className="details-btn" title="Ver detalle" onClick={() => handleShowProductos(venta)}>
+                        <FaEye/>
+                        Ver Detalle
+                      </button>
+                      <button className="edit-btn" title="Editar" onClick={() => handleEdit(venta.id)}>
+                        <FaEdit />
+                        Editar
+                      </button>
+                      <button className="delete-btn" title="Eliminar" onClick={() => handleDeleteClick(venta.id)}>
+                        <FaTrash />
+                        Eliminar
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+
+        <EditItemModal
+          isOpen={addModal}
+          item={{}}
+          title="Añadir venta"
+          fields={[
+            { name: 'cliente', label: 'Cliente', required: true },
+            { name: 'fecha', label: 'Fecha', type: 'date', required: true },
+            { name: 'total', label: 'Total', type: 'number', required: true },
+          ]}
+          onSave={handleSaveAdd}
+          onCancel={handleCancelAdd}
+        />
+        <EditItemModal
+          isOpen={editModal.open}
+          item={editModal.sale}
+          title="Editar venta"
+          fields={[
+            { name: 'cliente', label: 'Cliente', required: true },
+            { name: 'fecha', label: 'Fecha', type: 'date', required: true },
+            { name: 'total', label: 'Total', type: 'number', required: true },
+          ]}
+          onSave={handleSaveEdit}
+          onCancel={handleCancelEdit}
+        />
+        <ConfirmDeleteModal
+          isOpen={deleteModal.open}
+          message="¿Estás seguro de que deseas eliminar esta venta?"
+          onConfirm={handleConfirmDelete}
+          onCancel={handleCancelDelete}
         />
       </div>
-      <table className="sales-table">
-        <thead>
-          <tr>
-            <th>Cliente</th>
-            <th>Fecha</th>
-            <th>Total</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {paginatedSales.length === 0 ? (
-            <tr>
-              <td colSpan="4" className="no-sales">No hay ventas</td>
-            </tr>
-          ) : (
-            paginatedSales.map((venta) => (
-              <tr key={venta.id}>
-                <td>{venta.cliente}</td>
-                <td>{venta.fecha}</td>
-                <td>${venta.total.toLocaleString('es-CL')}</td>
-                <td>
-                  <div className="btn-action-container">
-                    <button className="details-btn" title="Ver historial">
-                      <FaEye/>
-                      Ver Detalle
-                    </button>
-                    <button className="edit-btn" title="Editar" onClick={() => handleEdit(venta.id)}>
-                      <FaEdit />
-                      Editar
-                    </button>
-                    <button className="delete-btn" title="Eliminar" onClick={() => handleDeleteClick(venta.id)}>
-                      <FaTrash />
-                      Eliminar
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
+      {/* Modal para productos vendidos fuera del contenedor principal */}
+      <ListModal
+        open={productsModal.open}
+        onClose={handleCloseProductosModal}
+        title={productsModal.title}
+        message={productsModal.message}
+        items={productsModal.items}
       />
-
-      {/* Modal para productos */}
-      {showModal && selectedVenta && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>Productos vendidos</h3>
-            <ul>
-              {selectedVenta.productos.map((prod, idx) => (
-                <li key={idx}>
-                  {prod.nombre} x{prod.cantidad} (${prod.precio.toLocaleString('es-CL')})
-                </li>
-              ))}
-            </ul>
-            <button className="modal-close-btn" onClick={handleCloseModal}>Cerrar</button>
-          </div>
-        </div>
-      )}
-      <EditItemModal
-        isOpen={addModal}
-        item={{}}
-        title="Añadir venta"
-        fields={[
-          { name: 'cliente', label: 'Cliente', required: true },
-          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
-          { name: 'total', label: 'Total', type: 'number', required: true },
-        ]}
-        onSave={handleSaveAdd}
-        onCancel={handleCancelAdd}
-      />
-      <EditItemModal
-        isOpen={editModal.open}
-        item={editModal.sale}
-        title="Editar venta"
-        fields={[
-          { name: 'cliente', label: 'Cliente', required: true },
-          { name: 'fecha', label: 'Fecha', type: 'date', required: true },
-          { name: 'total', label: 'Total', type: 'number', required: true },
-        ]}
-        onSave={handleSaveEdit}
-        onCancel={handleCancelEdit}
-      />
-      <ConfirmDeleteModal
-        isOpen={deleteModal.open}
-        message="¿Estás seguro de que deseas eliminar esta venta?"
-        onConfirm={handleConfirmDelete}
-        onCancel={handleCancelDelete}
-      />
-    </div>
+    </>
   );
 };
 

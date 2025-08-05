@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ListModal from './ListModal';
 import EditItemModal from './EditItemModal';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import mockClientsData from "../data/mockClientsData";
@@ -13,8 +14,8 @@ const Client = () => {
   
   const [showWipModal, setShowWipModal] = useState(false);
 
-  const [showModal, setShowModal] = useState(false);
-  const [selectedClient, setSelectedClient] = useState(null);
+  // Modal para historial de compras
+  const [historyModal, setHistoryModal] = useState({ open: false, items: [], title: '', message: '' });
   const [search, setSearch] = useState("");
   const [editModal, setEditModal] = useState({ open: false, client: null });
   const [addModal, setAddModal] = useState(false);
@@ -53,13 +54,16 @@ const Client = () => {
 
 
   const handleShowHistorial = (client) => {
-    setSelectedClient(client);
-    setShowModal(true);
+    setHistoryModal({
+      open: true,
+      items: client.historial.length > 0 ? client.historial : [],
+      title: `Historial de compras de ${client.nombre}`,
+      message: client.historial.length === 0 ? 'No hay compras registradas.' : ''
+    });
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedClient(null);
+  const handleCloseHistoryModal = () => {
+    setHistoryModal({ open: false, items: [], title: '', message: '' });
   };
 
   // Filtrar clientes solo por búsqueda
@@ -124,7 +128,7 @@ const Client = () => {
                 <td>
                   <div className="action-icons">
                     <div className="btn-action-container">
-                      <button className="history-btn" title="Ver historial">
+                      <button className="history-btn" title="Ver historial" onClick={() => handleShowHistorial(client)}>
                         <FaHistory />
                         Historial
                       </button>
@@ -151,22 +155,14 @@ const Client = () => {
         onPageChange={setCurrentPage}
       />
 
-      {/* Modal */}
-      {showModal && selectedClient && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>Historial de compras de {selectedClient.nombre}</h3>
-            <ul>
-              {selectedClient.historial.length > 0 ? (
-                selectedClient.historial.map((item, idx) => <li key={idx}>{item}</li>)
-              ) : (
-                <li>No hay compras registradas.</li>
-              )}
-            </ul>
-            <button className="modal-close-btn" onClick={handleCloseModal}>Cerrar</button>
-          </div>
-        </div>
-      )}
+      {/* Modal para historial de compras */}
+      <ListModal
+        open={historyModal.open}
+        onClose={handleCloseHistoryModal}
+        title={historyModal.title}
+        message={historyModal.message}
+        items={historyModal.items}
+      />
       <EditItemModal
         isOpen={addModal}
         item={{}}

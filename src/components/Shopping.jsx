@@ -1,6 +1,7 @@
 import WorkInProgressModal from './WorkInProgressModal';
 import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
+import ListModal from './ListModal';
 import "../styles/Shopping.css";
 import mockShoppingData from "../data/mockShoppingData";
 import SearchBar from "./SearchBar";
@@ -17,10 +18,8 @@ const Shopping = () => {
 
   const [showWipModal, setShowWipModal] = useState(false);
 
-  // Modal para productos
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalProductos, setModalProductos] = useState([]);
-  const [modalFactura, setModalFactura] = useState("");
+  // Modal para productos de la compra
+  const [productsModal, setProductsModal] = useState({ open: false, items: [], title: '', message: '' });
   const [deleteModal, setDeleteModal] = useState({ open: false, shoppingId: null });
   const [editModal, setEditModal] = useState({ open: false, shopping: null });
   const [addModal, setAddModal] = useState(false);
@@ -44,12 +43,19 @@ const Shopping = () => {
     setEditModal({ open: false, shopping: null });
   };
 
-  const handleOpenModal = (productos, factura) => {
-    setModalProductos(productos);
-    setModalFactura(factura);
-    setModalOpen(true);
+
+  const handleShowProductos = (compra) => {
+    setProductsModal({
+      open: true,
+      items: compra.productos,
+      title: `Productos de la compra (Factura: ${compra.factura})`,
+      message: compra.productos.length === 0 ? 'No hay productos en esta compra.' : ''
+    });
   };
-  const handleCloseModal = () => setModalOpen(false);
+
+  const handleCloseProductosModal = () => {
+    setProductsModal({ open: false, items: [], title: '', message: '' });
+  };
 
 
   // Filtrado por proveedor, factura y fechas
@@ -140,10 +146,10 @@ const Shopping = () => {
                     </td>
                     <td>
                       <div className="btn-action-container">
-                        <button className="details-btn" title="Ver historial">
+                        <button className="details-btn" title="Ver detalle" onClick={() => handleShowProductos(compra)}>
                           <FaEye />
                           Ver Detalle
-                        </button> 
+                        </button>
                         <button className="edit-btn" title="Editar" onClick={() => handleEdit(compra.id)}>
                           <FaEdit />
                           Editar
@@ -164,20 +170,14 @@ const Shopping = () => {
             totalPages={totalPages}
             onPageChange={setCurrentPage}
           />
-          {/* Modal de productos */}
-          {modalOpen && (
-            <div className="modal-overlay" onClick={handleCloseModal}>
-              <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <h3>Productos de la compra (Factura: {modalFactura})</h3>
-                <ul>
-                  {modalProductos.map((prod, idx) => (
-                    <li key={idx}>{prod}</li>
-                  ))}
-                </ul>
-                <button className="close-modal-btn" onClick={handleCloseModal}>Cerrar</button>
-              </div>
-            </div>
-          )}
+          {/* Modal para productos de la compra */}
+          <ListModal
+            open={productsModal.open}
+            onClose={handleCloseProductosModal}
+            title={productsModal.title}
+            message={productsModal.message}
+            items={productsModal.items}
+          />
         </div>
       </div>
       {/* Modal de edición vacío para añadir productos */}

@@ -4,6 +4,7 @@ import ConfirmDeleteModal from './ConfirmDeleteModal';
 import React, { useState } from 'react';
 import mockProvidersData from '../data/mockProvidersData';
 import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
+import ListModal from './ListModal';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 import '../styles/Providers.css';
@@ -19,6 +20,8 @@ const Providers = () => {
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [search, setSearch] = useState("");
   const [editModal, setEditModal] = useState({ open: false, provider: null });
+  // Estado para el modal de productos
+  const [productsModal, setProductsModal] = useState({ open: false, items: [], title: '', message: '' });
   const [addModal, setAddModal] = useState(false);
   const handleAdd = () => setAddModal(true);
   const handleSaveAdd = (newProvider) => {
@@ -27,9 +30,19 @@ const Providers = () => {
   };
   const handleCancelAdd = () => setAddModal(false);
 
-  const handleShowHistorial = (provider) => {
-    setSelectedProvider(provider);
-    setShowModal(true);
+
+  // Mostrar productos del proveedor en el modal
+  const handleShowProducts = (provider) => {
+    setProductsModal({
+      open: true,
+      items: provider.productos || [],
+      title: `Productos que provee ${provider.nombre}`,
+      message: provider.productos && provider.productos.length === 0 ? 'Este proveedor no tiene productos.' : ''
+    });
+  };
+
+  const handleCloseProductsModal = () => {
+    setProductsModal({ open: false, items: [], title: '', message: '' });
   };
 
   const handleCloseModal = () => {
@@ -147,9 +160,9 @@ const Providers = () => {
                 <td>{provider.fechaContratacion}</td>
                 <td>
                   <div className="btn-action-container">
-                    <button className="details-btn" title="Ver historial" onClick={() => handleShowHistorial(provider)}>
+                    <button className="details-btn" title="Ver productos" onClick={() => handleShowProducts(provider)}>
                       <FaEye />
-                      Ver detalle
+                      Ver productos
                     </button>
                     <button className="edit-btn" title="Editar" onClick={() => handleEdit(provider.id)}>
                       <FaEdit />
@@ -167,32 +180,19 @@ const Providers = () => {
         </tbody>
       </table>
 
+      <ListModal
+        open={productsModal.open}
+        onClose={handleCloseProductsModal}
+        title={productsModal.title}
+        message={productsModal.message}
+        items={productsModal.items}
+      />
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}
       />
 
-      {/* Modal para historial */}
-      {showModal && selectedProvider && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>Historial de entregas de {selectedProvider.nombre}</h3>
-            <ul>
-              {selectedProvider.historial.length > 0 ? (
-                selectedProvider.historial.map((item, idx) => (
-                  <li key={idx}>
-                    {item.producto} - {item.cantidad} unidades - {item.fecha}
-                  </li>
-                ))
-              ) : (
-                <li>No hay entregas registradas.</li>
-              )}
-            </ul>
-            <button className="modal-close-btn" onClick={handleCloseModal}>Cerrar</button>
-          </div>
-        </div>
-      )}
       <EditItemModal
         isOpen={addModal}
         item={{}}
