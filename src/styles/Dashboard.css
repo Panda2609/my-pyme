@@ -170,7 +170,7 @@
 }
 
 .kpi-icon {
-  color: var(--color-text-disabled); /* o el color que tú quieras */
+  color: ; /* o el color que tú quieras */
   font-size: 3em;
   position: absolute;
   align-self: flex-start;

@@ -7,7 +7,7 @@ const ListModal = ({ open, onClose, title, message, items = [] }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         {message && <p>{message}</p>}
         <ul className="list-modal-items">
           {items.length === 0 ? (
