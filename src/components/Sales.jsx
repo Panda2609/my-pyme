@@ -63,7 +63,7 @@ const Sales = () => {
   };
 
   const handleConfirmDelete = () => {
-    // Aquí iría la lógica real para eliminar la venta
+    setSales(sales.filter(s => s.id !== deleteModal.saleId));
     setDeleteModal({ open: false, saleId: null });
   };
 

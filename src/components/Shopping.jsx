@@ -230,7 +230,7 @@ const Shopping = () => {
   }
 
   function handleConfirmDelete() {
-    // Aquí iría la lógica real para eliminar la compra
+    setShoppings(shoppings.filter(s => s.id !== deleteModal.shoppingId));
     setDeleteModal({ open: false, shoppingId: null });
   }
 

@@ -82,8 +82,8 @@ const ProductList = ({ products }) => {
   };
 
   const handleConfirmDelete = () => {
-    console.log('Eliminar producto:', deleteModal.productId);
-    // Aquí iría la lógica real para eliminar el producto
+    // Eliminar producto del estado local
+    setAllProducts(allProducts.filter(p => p.id !== deleteModal.productId));
     setDeleteModal({ open: false, productId: null });
   };
 
