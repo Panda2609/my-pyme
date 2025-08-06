@@ -13,6 +13,8 @@ import ConfirmDeleteModal from './ConfirmDeleteModal';
 import EditItemModal from './EditItemModal';
 
 const Shopping = () => {
+  // Estado local para las compras
+  const [shoppings, setShoppings] = useState(mockShoppingData);
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState({ fromDate: "", toDate: "" });
 
@@ -30,12 +32,16 @@ const Shopping = () => {
   };
   const handleCancelAdd = () => setAddModal(false);
   const handleEdit = (shoppingId) => {
-    const shopping = mockShoppingData.find(s => s.id === shoppingId);
+    const shopping = shoppings.find(s => s.id === shoppingId);
     setEditModal({ open: true, shopping });
   };
 
   const handleSaveEdit = (updatedShopping) => {
-    // Aquí iría la lógica para guardar la compra editada
+    setShoppings(
+      shoppings.map(s =>
+        s.id === updatedShopping.id ? { ...updatedShopping } : s
+      )
+    );
     setEditModal({ open: false, shopping: null });
   };
 
@@ -59,7 +65,7 @@ const Shopping = () => {
 
 
   // Filtrado por proveedor, factura y fechas
-  const filtered = mockShoppingData.filter((compra) => {
+  const filtered = shoppings.filter((compra) => {
     const searchLower = search.toLowerCase();
     // Buscar en proveedor, factura y productos
     const matchProveedor = compra.proveedor.toLowerCase().includes(searchLower);

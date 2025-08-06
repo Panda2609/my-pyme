@@ -12,8 +12,8 @@ import ConfirmDeleteModal from './ConfirmDeleteModal';
 
 
 const ProductList = ({ products }) => {
-  // Usar los productos recibidos por props
-  const allProducts = products;
+  // Estado local para los productos
+  const [allProducts, setAllProducts] = useState(products);
 
   // Estados de filtros y búsqueda
   const [filters, setFilters] = useState({
@@ -29,6 +29,7 @@ const ProductList = ({ products }) => {
   const handleAdd = () => setAddModal(true);
   const handleSaveAdd = (newProduct) => {
     // Aquí iría la lógica para agregar el producto
+    setAllProducts([...allProducts, { ...newProduct, id: Date.now() }]);
     setAddModal(false);
   };
   const handleCancelAdd = () => setAddModal(false);
@@ -63,7 +64,12 @@ const ProductList = ({ products }) => {
   };
 
   const handleSaveEdit = (updatedProduct) => {
-    // Aquí iría la lógica para guardar el producto editado
+    // Actualizar el producto editado en el estado local
+    setAllProducts(
+      allProducts.map(p =>
+        p.id === updatedProduct.id ? { ...updatedProduct } : p
+      )
+    );
     setEditModal({ open: false, product: null });
   };
 

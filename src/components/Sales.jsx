@@ -13,6 +13,8 @@ import { ITEMS_PER_PAGE } from "../configs";
 import { FaPlus, FaFileUpload, FaEdit, FaTrash} from 'react-icons/fa';
 
 const Sales = () => {
+  // Estado local para las ventas
+  const [sales, setSales] = useState(mockSalesData);
   const [search, setSearch] = useState("");
   const [editModal, setEditModal] = useState({ open: false, sale: null });
   const [addModal, setAddModal] = useState(false);
@@ -23,12 +25,16 @@ const Sales = () => {
   };
   const handleCancelAdd = () => setAddModal(false);
   const handleEdit = (saleId) => {
-    const sale = mockSalesData.find(s => s.id === saleId);
+    const sale = sales.find(s => s.id === saleId);
     setEditModal({ open: true, sale });
   };
 
   const handleSaveEdit = (updatedSale) => {
-    // Aquí iría la lógica para guardar la venta editada
+    setSales(
+      sales.map(s =>
+        s.id === updatedSale.id ? { ...updatedSale } : s
+      )
+    );
     setEditModal({ open: false, sale: null });
   };
 
@@ -41,7 +47,7 @@ const Sales = () => {
 
 
   // Filtrar ventas por nombre de cliente y rango de fecha
-  const filteredSales = mockSalesData
+  const filteredSales = sales
     .filter((v) => v.cliente.toLowerCase().includes(search.toLowerCase()))
     .filter((v) =>
       filters.fromDate ? new Date(v.fecha) >= new Date(filters.fromDate) : true

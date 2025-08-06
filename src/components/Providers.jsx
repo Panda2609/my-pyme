@@ -13,9 +13,9 @@ import {FaPlus, FaFileUpload} from 'react-icons/fa';
 import ProductFilters from './ProductFilters';
 
 const Providers = () => {
-
+  // Estado local para los proveedores
+  const [providers, setProviders] = useState(mockProvidersData);
   const [showWipModal, setShowWipModal] = useState(false);
-
   const [showModal, setShowModal] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [search, setSearch] = useState("");
@@ -25,12 +25,10 @@ const Providers = () => {
   const [addModal, setAddModal] = useState(false);
   const handleAdd = () => setAddModal(true);
   const handleSaveAdd = (newProvider) => {
-    // Aquí iría la lógica para agregar el proveedor
+    setProviders([...providers, { ...newProvider, id: Date.now(), productos: [] }]);
     setAddModal(false);
   };
   const handleCancelAdd = () => setAddModal(false);
-
-
   // Mostrar productos del proveedor en el modal
   const handleShowProducts = (provider) => {
     setProductsModal({
@@ -40,56 +38,48 @@ const Providers = () => {
       message: provider.productos && provider.productos.length === 0 ? 'Este proveedor no tiene productos.' : ''
     });
   };
-
   const handleCloseProductsModal = () => {
     setProductsModal({ open: false, items: [], title: '', message: '' });
   };
-
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedProvider(null);
   };
-
   const handleEdit = (providerId) => {
-    const provider = mockProvidersData.find(p => p.id === providerId);
+    const provider = providers.find(p => p.id === providerId);
     setEditModal({ open: true, provider });
   };
-
   const handleSaveEdit = (updatedProvider) => {
-    // Aquí iría la lógica para guardar el proveedor editado
+    setProviders(
+      providers.map(p =>
+        p.id === updatedProvider.id ? { ...updatedProvider } : p
+      )
+    );
     setEditModal({ open: false, provider: null });
   };
-
   const handleCancelEdit = () => {
     setEditModal({ open: false, provider: null });
   };
-
   const [deleteModal, setDeleteModal] = useState({ open: false, providerId: null });
-
   const handleDeleteClick = (providerId) => {
     setDeleteModal({ open: true, providerId });
   };
-
   const handleConfirmDelete = () => {
-    // Aquí iría la lógica real para eliminar el proveedor
+    setProviders(providers.filter(p => p.id !== deleteModal.providerId));
     setDeleteModal({ open: false, providerId: null });
   };
-
   const handleCancelDelete = () => {
     setDeleteModal({ open: false, providerId: null });
   };
-
   // Filtros por fecha
   const [filters, setFilters] = useState({ fromDate: '', toDate: '' });
-
   // Filtrar proveedores por búsqueda y fechas
-  const filteredProviders = mockProvidersData.filter((p) => {
+  const filteredProviders = providers.filter((p) => {
     const matchSearch = p.nombre.toLowerCase().includes(search.toLowerCase());
     const matchFrom = filters.fromDate ? new Date(p.fechaContratacion) >= new Date(filters.fromDate) : true;
     const matchTo = filters.toDate ? new Date(p.fechaContratacion) <= new Date(filters.toDate) : true;
     return matchSearch && matchFrom && matchTo;
   });
-
   // Paginación
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = ITEMS_PER_PAGE;

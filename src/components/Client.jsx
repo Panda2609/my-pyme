@@ -11,9 +11,9 @@ import { FaPlus, FaFileUpload, FaEdit, FaTrash, FaHistory} from 'react-icons/fa'
 import WorkInProgressModal from './WorkInProgressModal';
 
 const Client = () => {
-  
+  // Estado local para los clientes
+  const [clients, setClients] = useState(mockClientsData);
   const [showWipModal, setShowWipModal] = useState(false);
-
   // Modal para historial de compras
   const [historyModal, setHistoryModal] = useState({ open: false, items: [], title: '', message: '' });
   const [search, setSearch] = useState("");
@@ -21,20 +21,22 @@ const Client = () => {
   const [addModal, setAddModal] = useState(false);
   const handleAdd = () => setAddModal(true);
   const handleSaveAdd = (newClient) => {
-    // Aquí iría la lógica para agregar el cliente
+    setClients([...clients, { ...newClient, id: Date.now(), historial: [] }]);
     setAddModal(false);
   };
   const handleCancelAdd = () => setAddModal(false);
   const handleEdit = (clientId) => {
-    const client = mockClientsData.find(c => c.id === clientId);
+    const client = clients.find(c => c.id === clientId);
     setEditModal({ open: true, client });
   };
-
   const handleSaveEdit = (updatedClient) => {
-    // Aquí iría la lógica para guardar el cliente editado
+    setClients(
+      clients.map(c =>
+        c.id === updatedClient.id ? { ...updatedClient } : c
+      )
+    );
     setEditModal({ open: false, client: null });
   };
-
   const handleCancelEdit = () => {
     setEditModal({ open: false, client: null });
   };
@@ -42,32 +44,27 @@ const Client = () => {
   const handleDeleteClick = (clientId) => {
     setDeleteModal({ open: true, clientId });
   };
-
   const handleConfirmDelete = () => {
-    // Aquí iría la lógica real para eliminar el cliente
+    setClients(clients.filter(c => c.id !== deleteModal.clientId));
     setDeleteModal({ open: false, clientId: null });
   };
-
   const handleCancelDelete = () => {
     setDeleteModal({ open: false, clientId: null });
   };
-
-
   const handleShowHistorial = (client) => {
     setHistoryModal({
       open: true,
-      items: client.historial.length > 0 ? client.historial : [],
+      items: client.historial && client.historial.length > 0 ? client.historial : [],
       title: `Historial de compras de ${client.nombre}`,
-      message: client.historial.length === 0 ? 'No hay compras registradas.' : ''
+      message: client.historial && client.historial.length === 0 ? 'No hay compras registradas.' : ''
     });
   };
-
   const handleCloseHistoryModal = () => {
     setHistoryModal({ open: false, items: [], title: '', message: '' });
   };
 
   // Filtrar clientes solo por búsqueda
-  const filteredClients = mockClientsData.filter((c) =>
+  const filteredClients = clients.filter((c) =>
     c.nombre.toLowerCase().includes(search.toLowerCase())
   );
 
